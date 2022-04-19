@@ -7,48 +7,52 @@
         mc:Ignorable="d"
         Title="ChatBot" Height="450" Width="800">
     <Grid>
-        <TabControl HorizontalAlignment="Left" Height="414" Margin="10,0,0,0" VerticalAlignment="Center" Width="760">
+        <TabControl HorizontalAlignment="Left" Height="414" Margin="20,0,0,0" VerticalAlignment="Center" Width="750">
             <TabItem Header="Create Questions">
                 <Grid Background="#FFE5E5E5" Margin="4,0,-4,0">
-                    <Label Content="Choose the type of question" HorizontalAlignment="Left" Height="28" Margin="24,64,0,0" VerticalAlignment="Top" Width="160"/>
-                    <Label Content="Write a question" HorizontalAlignment="Left" Height="29" Margin="24,22,0,0" VerticalAlignment="Top" Width="146"/>
-                    <TextBox x:Name="TextBoxQuestion" HorizontalAlignment="Left" Height="29" Margin="203,22,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="512"/>
-                    <ComboBox x:Name="ComboBoxQuestion" HorizontalAlignment="Left" Height="28" Margin="203,66,0,0" VerticalAlignment="Top" Width="315" IsSynchronizedWithCurrentItem="False" SelectionChanged="ComboBoxQuestion_SelectionChanged">
+                    <Label Content="Choose the type of question" HorizontalAlignment="Left" Height="28" Margin="24,107,0,0" VerticalAlignment="Top" Width="160"/>
+                    <Label Content="Write a question" HorizontalAlignment="Left" Height="29" Margin="24,61,0,0" VerticalAlignment="Top" Width="146"/>
+                    <TextBox x:Name="TextBoxQuestion" HorizontalAlignment="Left" Height="29" Margin="203,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="512"/>
+                    <ComboBox x:Name="ComboBoxQuestion" HorizontalAlignment="Left" Height="28" Margin="203,106,0,0" VerticalAlignment="Top" Width="315" IsSynchronizedWithCurrentItem="False" SelectionChanged="ComboBoxQuestion_SelectionChanged">
                         <TabItem Header="Yes/No"/>
                         <TabItem Header="Open question"/>
                         <TabItem Header="Choose one answer from several"/>
                         <TabItem Header="Select multiple answers from multiple "/>
                         <TabItem Header="Sorting"/>
                     </ComboBox>
-                    <Button Content="Add a question to a test" HorizontalAlignment="Left" Height="28" Margin="559,66,0,0" VerticalAlignment="Top" Width="156"/>
-                    <StackPanel x:Name="StackPanelYesNo" HorizontalAlignment="Left" Height="131" Margin="203,132,0,0" VerticalAlignment="Top" Width="315" Visibility="Hidden">
+                    <Button Content="Add a question to a test" HorizontalAlignment="Left" Height="28" Margin="559,106,0,0" VerticalAlignment="Top" Width="156"/>
+                    <StackPanel x:Name="StackPanelYesNo" HorizontalAlignment="Left" Height="131" Margin="203,150,0,0" VerticalAlignment="Top" Width="315" Visibility="Hidden">
                         <RadioButton x:Name="RadioButtonYes" Content="Yes" Height="22" Width="142" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                         <RadioButton x:Name="RadioButtonNo" Content="No" Height="21" Width="142"/>
                     </StackPanel>
-                    <StackPanel x:Name="StackPanelWriteAQuestion" HorizontalAlignment="Left" Height="60" Margin="203,132,0,0" VerticalAlignment="Top" Width="360" Visibility="Hidden">
+                    <StackPanel x:Name="StackPanelWriteAQuestion" HorizontalAlignment="Left" Height="60" Margin="203,150,0,0" VerticalAlignment="Top" Width="360" Visibility="Hidden">
                         <TextBox Height="29" TextWrapping="Wrap" Width="361"/>
                     </StackPanel>
-                    <StackPanel x:Name="StackPanelChooseOneAnswerFromSeveral" HorizontalAlignment="Left" Height="174" Margin="203,132,0,0" VerticalAlignment="Top" Width="315" Visibility="Hidden">
+                    <StackPanel x:Name="StackPanelChooseOneAnswerFromSeveral" HorizontalAlignment="Left" Height="174" Margin="203,150,0,0" VerticalAlignment="Top" Width="315" Visibility="Hidden">
                         <Button x:Name="ButtonAddAnAswerOption" Content="Add an answer option" Height="29" Width="142"/>
                     </StackPanel>
-                    <StackPanel x:Name="StackPanelSelectMultipleAnswersFromMultiple" HorizontalAlignment="Left" Height="170" Margin="203,136,0,0" VerticalAlignment="Top" Width="315" Visibility="Hidden">
+                    <StackPanel x:Name="StackPanelSelectMultipleAnswersFromMultiple" HorizontalAlignment="Left" Height="170" Margin="203,150,0,0" VerticalAlignment="Top" Width="315" Visibility="Hidden">
                         <Button x:Name="ButtonAddAnAswerOptionForSorting" Content="Add an answer option" Height="29" Width="260"/>
                     </StackPanel>
-                    <StackPanel x:Name="StackPanelSorting" HorizontalAlignment="Left" Height="174" Margin="203,132,0,0" VerticalAlignment="Top" Width="315" Visibility="Hidden">
+                    <StackPanel x:Name="StackPanelSorting" HorizontalAlignment="Left" Height="174" Margin="203,150,0,0" VerticalAlignment="Top" Width="315" Visibility="Hidden">
                         <Button Content="Add an answer option" Height="33" Width="250"/>
                     </StackPanel>
+                    <Label x:Name="LabelTestName" Content="Test name" HorizontalAlignment="Left" Height="29" Margin="24,17,0,0" VerticalAlignment="Top" Width="137"/>
+                    <TextBox HorizontalAlignment="Left" Height="29" Margin="203,16,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="512"/>
 
                 </Grid>
             </TabItem>
-            <TabItem/>
-            <TabItem Height="22" Margin="-2,-2,-2,0" VerticalAlignment="Top"/>
-            <TabItem Header="TabItem">
+            <TabItem Content="" Header="Tests" Margin="-2,-2,-29,0"/>
+            <TabItem Height="22" Margin="30,-2,-65,0" VerticalAlignment="Top"/>
+            <TabItem Header="TabItem" Margin="63,-2,-86,0">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
+                        <ColumnDefinition Width="65*"/>
+                        <ColumnDefinition Width="183*"/>
                     </Grid.ColumnDefinitions>
                 </Grid>
             </TabItem>
+
         </TabControl>
 
     </Grid>
