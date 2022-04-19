@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BLL;
+
 
 namespace WPF
 {
@@ -23,6 +25,12 @@ namespace WPF
         public MainWindow()
         {
             InitializeComponent();
+            UsersList.ItemsSource = UsersMock.GetUsersListMock();
+        }
+
+        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }
