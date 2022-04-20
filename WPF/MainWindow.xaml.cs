@@ -23,6 +23,7 @@ namespace WPF
         public MainWindow()
         {
             InitializeComponent();
+            UsersList.ItemsSource = UsersMock.GetUsersListMock();
         }
 
         private void ComboBoxQuestion_SelectionChanged(object sender, SelectionChangedEventArgs e)
