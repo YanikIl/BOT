@@ -8,10 +8,19 @@ namespace BLL.Questions
 {
     public class OpenQuestion: AbstractQuestion
     {
-        public string Answer { get; set; }
-        public void WriteAnswer(string text)
+        public string _answer;
+        public string Answer 
         {
-            Answer = text;
+            get 
+            { 
+                return _answer;
+            }
+            set 
+            { 
+                _answer = value;
+            }
         }
+        
+
     }
 }
