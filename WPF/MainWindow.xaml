@@ -52,15 +52,8 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
-            </TabItem>/>
-            <TabItem Header="TabItem" Margin="63,-2,-86,0">
-                <Grid Background="#FFE5E5E5">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="65*"/>
-                        <ColumnDefinition Width="183*"/>
-                    </Grid.ColumnDefinitions>
-                </Grid>
             </TabItem>
+
 
         </TabControl>
 
