@@ -42,7 +42,10 @@
 
                 </Grid>
             </TabItem>
+            
             <TabItem Content="" Header="Tests" Margin="-2,-2,-29,0"/>
+            
+
             <TabItem Header="Users" Height="22" Margin="30,-2,-65,0" VerticalAlignment="Top">
                 <ListView x:Name="UsersList" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="39,91,43,35" SelectionChanged="ListView_SelectionChanged" AutomationProperties.IsRequiredForForm="True">
                     <ListView.View>
