@@ -43,15 +43,17 @@
                 </Grid>
             </TabItem>
             <TabItem Content="" Header="Tests" Margin="-2,-2,-29,0"/>
-            <TabItem Height="22" Margin="30,-2,-65,0" VerticalAlignment="Top"/>
-            <TabItem Header="TabItem" Margin="63,-2,-86,0">
-                <Grid Background="#FFE5E5E5">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="65*"/>
-                        <ColumnDefinition Width="183*"/>
-                    </Grid.ColumnDefinitions>
-                </Grid>
+            <TabItem Header="Users" Height="22" Margin="30,-2,-65,0" VerticalAlignment="Top">
+                <ListView x:Name="UsersList" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="39,91,43,35" SelectionChanged="ListView_SelectionChanged" AutomationProperties.IsRequiredForForm="True">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn x:Name="Name" Header="Name" Width="100" DisplayMemberBinding="{Binding Name}"/>
+                            <GridViewColumn x:Name="Group" Header="Group" Width="100" DisplayMemberBinding="{Binding Group}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
             </TabItem>
+
 
         </TabControl>
 
