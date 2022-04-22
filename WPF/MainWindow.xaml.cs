@@ -74,5 +74,17 @@ namespace WPF
         {
 
         }
+
+        private void ButtonAddAnAswerOption_Click(object sender, RoutedEventArgs e)
+        {
+
+            CheckBox newcheckbox = new CheckBox();
+            StackPanelChooseOneAnswerFromSeveral.Children.Add(newcheckbox);
+
+            TextBox newtextBox = new TextBox(); 
+
+            newcheckbox.Content = newtextBox;
+
+        }
     }
 }
