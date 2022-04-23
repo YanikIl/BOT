@@ -74,5 +74,11 @@ namespace WPF
         {
 
         }
+
+        private void buttonAddQuestion_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
     }
 }

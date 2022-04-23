@@ -20,7 +20,7 @@
                         <TabItem Header="Select multiple answers from multiple "/>
                         <TabItem Header="Sorting"/>
                     </ComboBox>
-                    <Button Content="Add a question to a test" HorizontalAlignment="Left" Height="28" Margin="559,106,0,0" VerticalAlignment="Top" Width="156"/>
+                    <Button x:Name="buttonAddQuestion" Content="Add a question to a test" HorizontalAlignment="Left" Height="28" Margin="559,106,0,0" VerticalAlignment="Top" Width="156" Click="Button_Click"/>
                     <StackPanel x:Name="StackPanelYesNo" HorizontalAlignment="Left" Height="131" Margin="203,150,0,0" VerticalAlignment="Top" Width="315" Visibility="Hidden">
                         <RadioButton x:Name="RadioButtonYes" Content="Yes" Height="22" Width="142" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                         <RadioButton x:Name="RadioButtonNo" Content="No" Height="21" Width="142"/>
@@ -42,11 +42,13 @@
 
                 </Grid>
             </TabItem>
-            
-            <TabItem Content="" Header="Tests" Margin="-2,-2,-29,0"/>
-            
 
-            <TabItem Header="Users" Height="22" Margin="30,-2,-65,0" VerticalAlignment="Top">
+            <TabItem Margin="-1,1,-38,-1" Height="22" Header="Test">
+                <ListBox HorizontalAlignment="Center" Height="284" VerticalAlignment="Top" Width="668" d:ItemsSource="{d:SampleData ItemCount=5}"/>
+
+            </TabItem>
+
+            <TabItem Header="Users" Height="22" Margin="37,-2,-65,0" VerticalAlignment="Top">
                 <ListView x:Name="UsersList" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="39,91,43,35" SelectionChanged="ListView_SelectionChanged" AutomationProperties.IsRequiredForForm="True">
                     <ListView.View>
                         <GridView>
@@ -56,7 +58,6 @@
                     </ListView.View>
                 </ListView>
             </TabItem>
-
 
         </TabControl>
 
