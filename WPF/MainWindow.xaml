@@ -26,9 +26,9 @@
                         <RadioButton x:Name="RadioButtonNo" Content="No" Height="21" Width="142"/>
                     </StackPanel>
                     <StackPanel x:Name="StackPanelWriteAQuestion" HorizontalAlignment="Left" Height="60" Margin="203,150,0,0" VerticalAlignment="Top" Width="360" Visibility="Hidden">
-                        <TextBox Height="29" TextWrapping="Wrap" Width="361"/>
+                        <TextBox x:Name="textBoxAnswer" Height="29" TextWrapping="Wrap" Width="361"/>
                     </StackPanel>
-                    <StackPanel x:Name="StackPanelChooseOneAnswerFromSeveral" HorizontalAlignment="Left" Height="174" Margin="203,150,0,0" VerticalAlignment="Top" Width="315" Visibility="Visible">
+                    <StackPanel x:Name="StackPanelChooseOneAnswerFromSeveral" HorizontalAlignment="Left" Height="174" Margin="203,150,0,0" VerticalAlignment="Top" Width="315" Visibility="Hidden">
                         <Button x:Name="ButtonAddAnAswerOption" Content="Add an answer option" Height="29" Width="142" Click="ButtonAddAnAswerOption_Click"/>
                         <CheckBox x:Name="CheckBoxAnswer1" Height="16" Width="315">
                             <TextBox Height="17" TextWrapping="Wrap" Width="294"/>
@@ -44,7 +44,7 @@
                         <Button Content="Add an answer option" Height="33" Width="250"/>
                     </StackPanel>
                     <Label x:Name="LabelTestName" Content="Test name" HorizontalAlignment="Left" Height="29" Margin="24,17,0,0" VerticalAlignment="Top" Width="137"/>
-                    <TextBox HorizontalAlignment="Left" Height="29" Margin="203,16,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="512"/>
+                    <TextBox x:Name="textBoxTestName" HorizontalAlignment="Left" Height="29" Margin="203,16,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="512"/>
 
                 </Grid>
             </TabItem>

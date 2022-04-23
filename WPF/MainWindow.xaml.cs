@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,10 +22,12 @@ namespace WPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        private BindingList <AbstractQuestion> _todoQuestionList;
         public MainWindow()
         {
             InitializeComponent();
             UsersList.ItemsSource = UsersMock.GetUsersListMock();
+            _todoQuestionList = new BindingList<AbstractQuestion>();
         }
 
         private void ComboBoxQuestion_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -44,6 +47,8 @@ namespace WPF
                     StackPanelChooseOneAnswerFromSeveral.Visibility = Visibility.Hidden;
                     StackPanelSelectMultipleAnswersFromMultiple.Visibility = Visibility.Hidden;
                     StackPanelSorting.Visibility = Visibility.Hidden;
+
+
                     break;
                 case 2:
                     StackPanelChooseOneAnswerFromSeveral.Visibility = Visibility.Visible;
@@ -80,11 +85,11 @@ namespace WPF
 
             CheckBox newcheckbox = new CheckBox();
             StackPanelChooseOneAnswerFromSeveral.Children.Add(newcheckbox);
-
-            TextBox newtextBox = new TextBox(); 
-
+            TextBox newtextBox = new TextBox();
+            newtextBox.Width = 294;
             newcheckbox.Content = newtextBox;
 
         }
+
     }
 }

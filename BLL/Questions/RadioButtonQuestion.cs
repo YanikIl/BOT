@@ -8,6 +8,12 @@ namespace BLL.Questions
 {
     public class RadioButtonQuestion: AbstractQuestion
     {
+        private bool _isYes;
+        public bool IsYes
+        {
+            get { return _isYes; }
+            set { _isYes = value; }
+        }
         public List<string> AnswerOptions;
 
         public List<string> GetAnswerOptions()
