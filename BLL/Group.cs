@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    internal class Group
+    public class Group
     {
+        public string GroupsName { get; set; }
+
+        public Group(string groupsName)
+        {
+            GroupsName = groupsName;
+        }
     }
 }
