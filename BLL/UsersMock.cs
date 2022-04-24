@@ -2,10 +2,10 @@
 {
     public class UsersMock
     {
-        
+
         public static List<User> GetUsersListMock()
         {
-            List<User> usersMock = new List<User> { 
+            List<User> usersMock = new List<User> {
                 new User("Tom Bombadil"),
                 new User("Bob"),
                 new User("Sam"),

@@ -28,6 +28,49 @@ namespace WPF
             UsersList.ItemsSource = UsersMock.GetUsersListMock();
         }
 
+        private void ComboBoxQuestion_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            switch (ComboBoxQuestion.SelectedIndex)
+            {
+                case 0:
+                    StackPanelYesNo.Visibility = Visibility.Visible;
+                    StackPanelWriteAQuestion.Visibility = Visibility.Hidden;
+                    StackPanelChooseOneAnswerFromSeveral.Visibility = Visibility.Hidden;
+                    StackPanelSelectMultipleAnswersFromMultiple.Visibility = Visibility.Hidden;
+                    StackPanelSorting.Visibility = Visibility.Hidden;
+                    break;
+                case 1:
+                    StackPanelWriteAQuestion.Visibility = Visibility.Visible;
+                    StackPanelYesNo.Visibility = Visibility.Hidden;
+                    StackPanelChooseOneAnswerFromSeveral.Visibility = Visibility.Hidden;
+                    StackPanelSelectMultipleAnswersFromMultiple.Visibility = Visibility.Hidden;
+                    StackPanelSorting.Visibility = Visibility.Hidden;
+                    break;
+                case 2:
+                    StackPanelChooseOneAnswerFromSeveral.Visibility = Visibility.Visible;
+                    StackPanelWriteAQuestion.Visibility = Visibility.Hidden;
+                    StackPanelYesNo.Visibility = Visibility.Hidden;
+                    StackPanelSelectMultipleAnswersFromMultiple.Visibility = Visibility.Hidden;
+                    StackPanelSorting.Visibility = Visibility.Hidden;
+                    break;
+                case 3:
+                    StackPanelSelectMultipleAnswersFromMultiple.Visibility = Visibility.Visible;
+                    StackPanelChooseOneAnswerFromSeveral.Visibility = Visibility.Hidden;
+                    StackPanelWriteAQuestion.Visibility = Visibility.Hidden;
+                    StackPanelYesNo.Visibility = Visibility.Hidden;
+                    StackPanelSorting.Visibility = Visibility.Hidden;
+                    break;
+
+                case 4:
+                    StackPanelSorting.Visibility = Visibility.Visible;
+                    StackPanelSelectMultipleAnswersFromMultiple.Visibility = Visibility.Hidden;
+                    StackPanelChooseOneAnswerFromSeveral.Visibility = Visibility.Hidden;
+                    StackPanelWriteAQuestion.Visibility = Visibility.Hidden;
+                    StackPanelYesNo.Visibility = Visibility.Hidden;
+                    break;
+            }
+        }
+
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
