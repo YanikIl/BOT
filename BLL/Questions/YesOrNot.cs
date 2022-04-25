@@ -8,11 +8,16 @@ namespace BLL.Questions
 {
     public class YesOrNot : AbstractQuestion
     {
+        public YesOrNot(string name)
+        {
+            Name = name;
+            Type = "Yes or not";
+        }
         public string Answer { get; set; }
 
-        public void GetAnswer(string answer)
+        public override List<string> GetAnswer()
         {
-            Answer = answer;
+            return "";
         }
     }
 }

@@ -9,16 +9,16 @@ namespace BLL.Questions
     public class RadioButtonQuestion: AbstractQuestion
     {
         public List<string> AnswerOptions;
-
-        public List<string> GetAnswerOptions()
+        public RadioButtonQuestion(string name)
+        {
+            Name = name;
+            Type = "Radio button question";
+        }
+        public override List<string> GetAnswer()
         {
             return AnswerOptions;
         }
 
-        public void AddAnswer(string text, List<string> answerOptions)
-        {
-            answerOptions.Add(text);
-        }
 
     }
 }

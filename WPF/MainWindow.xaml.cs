@@ -25,6 +25,7 @@ namespace WPF
         {
             InitializeComponent();
             UsersList.ItemsSource = UsersMock.GetUsersListMock();
+            List<AbstractQuestion> questions = new List<AbstractQuestion>();
         }
 
         private void ComboBoxQuestion_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -77,8 +78,17 @@ namespace WPF
 
         private void buttonAddQuestion_Click(object sender, RoutedEventArgs e)
         {
+            listBoxTest.Items.Add(TextBoxQuestion.Text);
+        }
+
+        private void buttonEditQuestion_Click(object sender, RoutedEventArgs e)
+        {
 
         }
 
+        private void buttonDeleteQuestion_Click(object sender, RoutedEventArgs e)
+        {
+            listBoxTest.Items.RemoveAt(1);
+        }
     }
 }

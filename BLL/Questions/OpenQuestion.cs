@@ -20,7 +20,15 @@ namespace BLL.Questions
                 _answer = value;
             }
         }
-        
+        public OpenQuestion(string name)
+        {
+            Name = name;
+            Type = "Open question";
+        }
+        public override List<string> GetAnswer()
+        {
+            return _answer;
+        }
 
     }
 }
