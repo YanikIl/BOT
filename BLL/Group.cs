@@ -8,11 +8,11 @@ namespace BLL
 {
     public class Group
     {
-        public string GroupsName { get; set; }
+        public string Name { get; set; }
 
         public Group(string groupsName)
         {
-            GroupsName = groupsName;
+            Name = groupsName;
         }
     }
 }

@@ -10,46 +10,54 @@
         <TabControl HorizontalAlignment="Left" Height="414" Margin="20,0,0,0" VerticalAlignment="Center" Width="750">
             <TabItem Header="Create Questions">
                 <Grid Background="#FFE5E5E5" Margin="4,0,-4,0">
-                    <Label Content="Choose the type of question" HorizontalAlignment="Left" Height="28" Margin="24,107,0,0" VerticalAlignment="Top" Width="160"/>
-                    <Label Content="Write a question" HorizontalAlignment="Left" Height="29" Margin="24,61,0,0" VerticalAlignment="Top" Width="146"/>
-                    <TextBox x:Name="TextBoxQuestion" HorizontalAlignment="Left" Height="29" Margin="203,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="512"/>
-                    <ComboBox x:Name="ComboBoxQuestion" HorizontalAlignment="Left" Height="28" Margin="203,106,0,0" VerticalAlignment="Top" Width="315" IsSynchronizedWithCurrentItem="False" SelectionChanged="ComboBoxQuestion_SelectionChanged">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="77*"/>
+                        <ColumnDefinition Width="295*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="Choose the type of question" HorizontalAlignment="Left" Height="28" Margin="24,107,0,0" VerticalAlignment="Top" Width="160" Grid.ColumnSpan="2"/>
+                    <Label Content="Write a question" HorizontalAlignment="Left" Height="29" Margin="24,61,0,0" VerticalAlignment="Top" Width="146" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="TextBoxQuestion" HorizontalAlignment="Left" Height="29" Margin="49,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="512" Grid.Column="1"/>
+                    <ComboBox x:Name="ComboBoxQuestion" HorizontalAlignment="Left" Height="28" Margin="49,106,0,0" VerticalAlignment="Top" Width="315" IsSynchronizedWithCurrentItem="False" SelectionChanged="ComboBoxQuestion_SelectionChanged" Grid.Column="1">
                         <TabItem Header="Yes/No"/>
                         <TabItem Header="Open question"/>
                         <TabItem Header="Choose one answer from several"/>
                         <TabItem Header="Select multiple answers from multiple "/>
                         <TabItem Header="Sorting"/>
                     </ComboBox>
-                    <Button Content="Add a question to a test" HorizontalAlignment="Left" Height="28" Margin="559,106,0,0" VerticalAlignment="Top" Width="156"/>
-                    <StackPanel x:Name="StackPanelYesNo" HorizontalAlignment="Left" Height="131" Margin="203,150,0,0" VerticalAlignment="Top" Width="315" Visibility="Hidden">
+                    <Button Content="Add a question to a test" HorizontalAlignment="Left" Height="28" Margin="405,106,0,0" VerticalAlignment="Top" Width="156" Grid.Column="1"/>
+                    <StackPanel x:Name="StackPanelYesNo" HorizontalAlignment="Left" Height="131" Margin="49,150,0,0" VerticalAlignment="Top" Width="315" Visibility="Hidden" Grid.Column="1">
                         <RadioButton x:Name="RadioButtonYes" Content="Yes" Height="22" Width="142" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                         <RadioButton x:Name="RadioButtonNo" Content="No" Height="21" Width="142"/>
                     </StackPanel>
-                    <StackPanel x:Name="StackPanelWriteAQuestion" HorizontalAlignment="Left" Height="60" Margin="203,150,0,0" VerticalAlignment="Top" Width="360" Visibility="Hidden">
+                    <StackPanel x:Name="StackPanelWriteAQuestion" HorizontalAlignment="Left" Height="60" Margin="49,150,0,0" VerticalAlignment="Top" Width="360" Visibility="Hidden" Grid.Column="1">
                         <TextBox Height="29" TextWrapping="Wrap" Width="361"/>
                     </StackPanel>
-                    <StackPanel x:Name="StackPanelChooseOneAnswerFromSeveral" HorizontalAlignment="Left" Height="174" Margin="203,150,0,0" VerticalAlignment="Top" Width="315" Visibility="Hidden">
+                    <StackPanel x:Name="StackPanelChooseOneAnswerFromSeveral" HorizontalAlignment="Left" Height="174" Margin="49,150,0,0" VerticalAlignment="Top" Width="315" Visibility="Hidden" Grid.Column="1">
                         <Button x:Name="ButtonAddAnAswerOption" Content="Add an answer option" Height="29" Width="142"/>
                     </StackPanel>
-                    <StackPanel x:Name="StackPanelSelectMultipleAnswersFromMultiple" HorizontalAlignment="Left" Height="170" Margin="203,150,0,0" VerticalAlignment="Top" Width="315" Visibility="Hidden">
+                    <StackPanel x:Name="StackPanelSelectMultipleAnswersFromMultiple" HorizontalAlignment="Left" Height="170" Margin="49,150,0,0" VerticalAlignment="Top" Width="315" Visibility="Hidden" Grid.Column="1">
                         <Button x:Name="ButtonAddAnAswerOptionForSorting" Content="Add an answer option" Height="29" Width="260"/>
                     </StackPanel>
-                    <StackPanel x:Name="StackPanelSorting" HorizontalAlignment="Left" Height="174" Margin="203,150,0,0" VerticalAlignment="Top" Width="315" Visibility="Hidden">
+                    <StackPanel x:Name="StackPanelSorting" HorizontalAlignment="Left" Height="174" Margin="49,150,0,0" VerticalAlignment="Top" Width="315" Visibility="Hidden" Grid.Column="1">
                         <Button Content="Add an answer option" Height="33" Width="250"/>
                     </StackPanel>
-                    <Label x:Name="LabelTestName" Content="Test name" HorizontalAlignment="Left" Height="29" Margin="24,17,0,0" VerticalAlignment="Top" Width="137"/>
-                    <TextBox HorizontalAlignment="Left" Height="29" Margin="203,16,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="512"/>
+                    <Label x:Name="LabelTestName" Content="Test name" HorizontalAlignment="Left" Height="29" Margin="24,17,0,0" VerticalAlignment="Top" Width="137" Grid.ColumnSpan="2"/>
+                    <TextBox HorizontalAlignment="Left" Height="29" Margin="49,16,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="512" Grid.Column="1"/>
 
                 </Grid>
             </TabItem>
             <TabItem Content="" Header="Tests" />
             <TabItem Header="Users" >
                 <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="106*"/>
+                        <RowDefinition Height="87*"/>
+                    </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="100*"/>
-                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="371*"/>
+                        <ColumnDefinition Width="373*"/>
                     </Grid.ColumnDefinitions>
-                    <ListView x:Name="UsersList" Margin="0,0,0,150" SelectionChanged="ListView_SelectionChanged" AutomationProperties.IsRequiredForForm="True" Grid.ColumnSpan="2">
+                    <ListView x:Name="UsersList" Margin="0,0,0,2" SelectionChanged="ListView_SelectionChanged" AutomationProperties.IsRequiredForForm="True" Grid.ColumnSpan="2" FontSize="14" >
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn x:Name="Name" Header="Name" Width="100" DisplayMemberBinding="{Binding Name}"/>
@@ -57,9 +65,10 @@
                             </GridView>
                         </ListView.View>
                     </ListView>
-                    <TextBox x:Name="TextBoxAddGroup" HorizontalAlignment="Left" Margin="0,272,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="324" Height="43" FontSize="16"/>
-                    <Label Content="Add new group" HorizontalAlignment="Left" Margin="0,237,0,0" VerticalAlignment="Top" Width="219" FontSize="18"/>
-                    <Button x:Name="ButtonAddGroup" Content="Add" HorizontalAlignment="Left" Margin="324,272,0,0" VerticalAlignment="Top" Height="43" Width="41" Click="ButtonAddGroup_Click"/>
+                    <TextBox x:Name="TextBoxAddGroup" HorizontalAlignment="Left" Margin="0,32,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="324" Height="57" FontSize="14" Grid.Row="1" />
+                    <Label Content="Add new group" HorizontalAlignment="Left" Margin="0,3,0,0" VerticalAlignment="Top" Width="219" FontSize="18" FontStretch="Medium" FontWeight="Medium" Height="34" Grid.Row="1"/>
+                    <Button x:Name="ButtonAddGroup" Content="Add" HorizontalAlignment="Left" Margin="324,32,0,0" VerticalAlignment="Top" Height="57" Width="41" Click="ButtonAddGroup_Click" Grid.Row="1"/>
+                    <TextBox x:Name="TBGroups" HorizontalAlignment="Center" Margin="0,32,0,10" TextWrapping="Wrap" Width="373" TextChanged="TextBox_TextChanged" FontSize="14" Grid.Column="1" Grid.Row="1"/>
                 </Grid>
             </TabItem>
 
