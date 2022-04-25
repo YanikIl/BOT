@@ -30,7 +30,13 @@
                     </StackPanel>
 
                     <StackPanel x:Name="StackPanelChooseOneAnswerFromSeveral" HorizontalAlignment="Left" Height="174" Margin="203,150,0,0" VerticalAlignment="Top" Width="315" Visibility="Hidden">
-                        <Button x:Name="ButtonAddAnAswerOption" Content="Add an answer option" Height="29" Width="142" Click="ButtonAddAnAswerOption_Click"/>
+                        
+                        <RadioButton Height="26" Width="315">
+                            <TextBox Height="26" TextWrapping="Wrap" Text="" Width="294"/>
+                        </RadioButton >
+                        <RadioButton Height="26" Width="316">
+                            <TextBox Height="26" TextWrapping="Wrap" Text="" Width="294"/>
+                        </RadioButton >
                         <RadioButton Height="26" Width="315">
                             <TextBox Height="26" TextWrapping="Wrap" Text="" Width="294"/>
                         </RadioButton >
@@ -40,18 +46,23 @@
                     </StackPanel>
 
                     <StackPanel x:Name="StackPanelSelectMultipleAnswersFromMultiple" HorizontalAlignment="Left" Height="170" Margin="203,161,0,0" VerticalAlignment="Top" Width="315" Visibility="Hidden">
-                        <Button x:Name="ButtonAddAnAswerOptionForMultipleAnswers" Content="Add an answer option" Height="29" Width="260" Click="ButtonAddAnAswerOptionForMultipleAnswers_Click"/>
                         <CheckBox  Height="27">
                             <TextBox Height="29" TextWrapping="Wrap" Text="" Width="295"/>
                         </CheckBox>
                         <CheckBox  Height="27">
                             <TextBox Height="29" TextWrapping="Wrap" Text="" Width="295"/>
                         </CheckBox>
-
+                        <CheckBox  Height="27">
+                            <TextBox Height="29" TextWrapping="Wrap" Text="" Width="295"/>
+                        </CheckBox>
+                        <CheckBox  Height="27">
+                            <TextBox Height="29" TextWrapping="Wrap" Text="" Width="295"/>
+                        </CheckBox>
                     </StackPanel>
 
                     <StackPanel x:Name="StackPanelSorting" HorizontalAlignment="Left" Height="174" Margin="203,150,0,0" VerticalAlignment="Top" Width="315" Visibility="Hidden">
-                        <Button x:Name="buttonForSorting" Content="Add an answer option" Height="33" Width="250" Click="buttonForSorting_Click"/>
+                        <TextBox Height="26" TextWrapping="Wrap" Text="" Width="315"/>
+                        <TextBox Height="26" TextWrapping="Wrap" Text="" Width="315"/>
                         <TextBox Height="26" TextWrapping="Wrap" Text="" Width="315"/>
                         <TextBox Height="26" TextWrapping="Wrap" Text="" Width="315"/>
                     </StackPanel>

@@ -83,34 +83,5 @@ namespace WPF
         }
         
 
-
-        private void ButtonAddAnAswerOption_Click(object sender, RoutedEventArgs e)
-        {
-            RadioButton newradiobutton = new RadioButton();
-            StackPanelChooseOneAnswerFromSeveral.Children.Add(newradiobutton);
-            TextBox newtextBox = new TextBox();
-            newtextBox.Width = 294;
-            newtextBox.Height = 26;
-            newradiobutton.Content = newtextBox;
-            
-        }
-
-        private void ButtonAddAnAswerOptionForMultipleAnswers_Click(object sender, RoutedEventArgs e)
-        {
-            CheckBox newcheckbox = new CheckBox();
-            StackPanelSelectMultipleAnswersFromMultiple.Children.Add(newcheckbox);
-            TextBox newtextBox = new TextBox();
-            newtextBox.Width = 295;
-            newtextBox.Height = 29;
-            newcheckbox.Content = newtextBox;
-        }
-
-        private void buttonForSorting_Click(object sender, RoutedEventArgs e)
-        {
-            TextBox newtextBox = new TextBox();
-            newtextBox.Height = 26;
-            newtextBox.Width = 315;
-            StackPanelSorting.Children.Add(newtextBox);
-        }
     }
 }
