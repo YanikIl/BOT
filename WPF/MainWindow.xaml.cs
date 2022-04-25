@@ -23,10 +23,9 @@ namespace WPF
     {
 
         public List<User> listOfUsers = UsersMock.GetUsersListMock();
-        public List<Group> listOfGroups = new List<Group>
-        {
-            new Group("Other"),
-        };
+        public List<Group> listOfGroups = new List<Group> {new Group("Other")};
+
+
 
         public void AddGroup(string groupsName)
         {
@@ -49,8 +48,9 @@ namespace WPF
         public MainWindow()
         {
             InitializeComponent();
-            UsersList.ItemsSource = UsersMock.GetUsersListMock();
+            DataGrid_UsersList.ItemsSource = listOfUsers;
             TBGroups.Text = GetGroupsInfo(listOfGroups);
+            ListBox_Groups.ItemsSource = listOfGroups;
         }
 
         private void ComboBoxQuestion_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -96,10 +96,7 @@ namespace WPF
             }
         }
 
-        ///private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        ///{
-        ///
-        ///}
+
 
         private void ButtonAddGroup_Click(object sender, RoutedEventArgs e)
         {
@@ -108,19 +105,34 @@ namespace WPF
             TBGroups.Text = GetGroupsInfo(listOfGroups);
         }
 
+        //private void ButtonAddGroup_Click(object sender, RoutedEventArgs e)
+        //{
+        //    string groupName = TextBoxAddGroup.Text;
+        //    listOfGroups.Add(new Group(groupName));
+
+        //}
+
+        private void TextBoxAddGroup_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            TextBoxAddGroup.Text = "";
+        }
+
+
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
 
-        private void UsersList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void DataGrid_UsersList_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
-
+            DataGrid_UsersList.Background = Brushes.Red;
         }
 
-        private void UsersList_SelectedCellsChanged(object sender, SelectionChangedEventArgs e)
+        private void Buttun_SaveUserList_Changes_Click(object sender, RoutedEventArgs e)
         {
-            
+            //UpdateGroupsMembers(listOfGroups);
         }
+
+        
     }
 }

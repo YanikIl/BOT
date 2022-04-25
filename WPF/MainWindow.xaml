@@ -57,25 +57,27 @@
                         <ColumnDefinition Width="371*"/>
                         <ColumnDefinition Width="373*"/>
                     </Grid.ColumnDefinitions>
-                    
-                    <!--<ListView x:Name="UsersList" Margin="0,0,0,2" SelectionChanged="ListView_SelectionChanged" AutomationProperties.IsRequiredForForm="True" Grid.ColumnSpan="2" FontSize="14" >
-                        <ListView.View>
-                            <GridView>
-                                <GridViewColumn x:Name="Name" Header="Name" Width="100" DisplayMemberBinding="{Binding Name}"/>
-                                <GridViewColumn x:Name="Group" Header="Group" Width="100" DisplayMemberBinding="{Binding Group}"/>
-                            </GridView>
-                        </ListView.View>
-                    </ListView>-->
-                    <TextBox x:Name="TextBoxAddGroup" HorizontalAlignment="Left" Margin="0,32,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="324" Height="57" FontSize="14" Grid.Row="1" />
-                    <Label Content="Add new group" HorizontalAlignment="Left" Margin="0,3,0,0" VerticalAlignment="Top" Width="219" FontSize="18" FontStretch="Medium" FontWeight="Medium" Height="34" Grid.Row="1"/>
-                    <Button x:Name="ButtonAddGroup" Content="Add" HorizontalAlignment="Left" Margin="324,32,0,0" VerticalAlignment="Top" Height="57" Width="41" Click="ButtonAddGroup_Click" Grid.Row="1"/>
-                    <TextBox x:Name="TBGroups" HorizontalAlignment="Center" Margin="0,32,0,10" TextWrapping="Wrap" Width="373" TextChanged="TextBox_TextChanged" FontSize="14" Grid.Column="1" Grid.Row="1"/>
-                    <DataGrid x:Name="UsersList" AutoGenerateColumns="False" SelectionChanged="UsersList_SelectionChanged">
+                    <TextBox x:Name="TextBoxAddGroup" HorizontalAlignment="Left" Margin="0,164,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="324" Height="29" FontSize="14" MouseDoubleClick="TextBoxAddGroup_MouseDoubleClick" />
+                    <Label Content="Add new group" HorizontalAlignment="Left" VerticalAlignment="Top" Width="218" FontSize="14" FontStretch="Medium" FontWeight="Medium" Height="29" Margin="0,137,0,0"/>
+                    <Button x:Name="ButtonAddGroup" Content="Add" HorizontalAlignment="Left" Margin="326,164,0,0" VerticalAlignment="Top" Height="29" Width="41" Click="ButtonAddGroup_Click"/>
+                    <TextBox x:Name="TBGroups" HorizontalAlignment="Center" Margin="0,35,0,75" TextWrapping="Wrap" Width="372" TextChanged="TextBox_TextChanged" FontSize="14"/>
+                    <DataGrid x:Name="DataGrid_UsersList" AutoGenerateColumns="False" CellEditEnding="DataGrid_UsersList_CellEditEnding" Margin="1,212,372,26" Grid.RowSpan="2" Grid.ColumnSpan="2">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="100*" />
-                            <DataGridTextColumn Header="Group" Binding="{Binding Group}" Width="100*" />
+                            <DataGridTextColumn Header="Name" Binding="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="100*" />
+                            <DataGridTextColumn Header="Group" Binding="{Binding Group, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="100*" />
                         </DataGrid.Columns>
                     </DataGrid>
+                    <Button x:Name="Buttun_SaveUserList_Changes" Content="Save Changes" HorizontalAlignment="Left" Margin="210,148,0,0" VerticalAlignment="Top" Height="26" Width="162" Click="Buttun_SaveUserList_Changes_Click" Grid.Row="1" Grid.ColumnSpan="2"/>
+                    <Label x:Name="LabelListGroups" Content="List Of Groups" HorizontalAlignment="Left" VerticalAlignment="Top" Width="218" FontSize="14" FontStretch="Medium" FontWeight="Medium" Height="29" Margin="0,1,0,0"/>
+                    <ListBox x:Name="ListBox_Groups" Grid.Column="1" >
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <TextBlock Text="{Binding Name}" Grid.Column="1"></TextBlock>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
                 </Grid>
             </TabItem>
 

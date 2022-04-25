@@ -9,10 +9,23 @@ namespace BLL
     public class Group
     {
         public string Name { get; set; }
+        
+        public List<User> Users { get; set; }
 
-        public Group(string groupsName)
+
+        public Group(string name)
         {
-            Name = groupsName;
+            Name = name;
         }
+
+        public void AddUser(User user)
+        {
+            if (user.Group == Name)
+            {
+                Users.Add(user);
+            }
+        }
+
+        
     }
 }
