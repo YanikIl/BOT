@@ -96,10 +96,10 @@ namespace WPF
             }
         }
 
-        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
+        ///private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        ///{
+        ///
+        ///}
 
         private void ButtonAddGroup_Click(object sender, RoutedEventArgs e)
         {
@@ -111,6 +111,16 @@ namespace WPF
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
+        }
+
+        private void UsersList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void UsersList_SelectedCellsChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
         }
     }
 }

@@ -57,18 +57,25 @@
                         <ColumnDefinition Width="371*"/>
                         <ColumnDefinition Width="373*"/>
                     </Grid.ColumnDefinitions>
-                    <ListView x:Name="UsersList" Margin="0,0,0,2" SelectionChanged="ListView_SelectionChanged" AutomationProperties.IsRequiredForForm="True" Grid.ColumnSpan="2" FontSize="14" >
+                    
+                    <!--<ListView x:Name="UsersList" Margin="0,0,0,2" SelectionChanged="ListView_SelectionChanged" AutomationProperties.IsRequiredForForm="True" Grid.ColumnSpan="2" FontSize="14" >
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn x:Name="Name" Header="Name" Width="100" DisplayMemberBinding="{Binding Name}"/>
                                 <GridViewColumn x:Name="Group" Header="Group" Width="100" DisplayMemberBinding="{Binding Group}"/>
                             </GridView>
                         </ListView.View>
-                    </ListView>
+                    </ListView>-->
                     <TextBox x:Name="TextBoxAddGroup" HorizontalAlignment="Left" Margin="0,32,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="324" Height="57" FontSize="14" Grid.Row="1" />
                     <Label Content="Add new group" HorizontalAlignment="Left" Margin="0,3,0,0" VerticalAlignment="Top" Width="219" FontSize="18" FontStretch="Medium" FontWeight="Medium" Height="34" Grid.Row="1"/>
                     <Button x:Name="ButtonAddGroup" Content="Add" HorizontalAlignment="Left" Margin="324,32,0,0" VerticalAlignment="Top" Height="57" Width="41" Click="ButtonAddGroup_Click" Grid.Row="1"/>
                     <TextBox x:Name="TBGroups" HorizontalAlignment="Center" Margin="0,32,0,10" TextWrapping="Wrap" Width="373" TextChanged="TextBox_TextChanged" FontSize="14" Grid.Column="1" Grid.Row="1"/>
+                    <DataGrid x:Name="UsersList" AutoGenerateColumns="False" SelectionChanged="UsersList_SelectionChanged">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="100*" />
+                            <DataGridTextColumn Header="Group" Binding="{Binding Group}" Width="100*" />
+                        </DataGrid.Columns>
+                    </DataGrid>
                 </Grid>
             </TabItem>
 
