@@ -48,8 +48,6 @@ namespace WPF
         public MainWindow()
         {
             InitializeComponent();
-            DataGrid_UsersList.ItemsSource = listOfUsers;
-            TBGroups.Text = GetGroupsInfo(listOfGroups);
             ListBox_Groups.ItemsSource = listOfGroups;
         }
 
@@ -102,15 +100,10 @@ namespace WPF
         {
             string groupName = TextBoxAddGroup.Text;
             AddGroup(groupName);
-            TBGroups.Text = GetGroupsInfo(listOfGroups);
+            ListBox_Groups.Items.Refresh();
         }
 
-        //private void ButtonAddGroup_Click(object sender, RoutedEventArgs e)
-        //{
-        //    string groupName = TextBoxAddGroup.Text;
-        //    listOfGroups.Add(new Group(groupName));
-
-        //}
+        
 
         private void TextBoxAddGroup_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
@@ -118,21 +111,10 @@ namespace WPF
         }
 
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+
+        private void TextBoxAddGroup_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
-
-        private void DataGrid_UsersList_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
-        {
-            DataGrid_UsersList.Background = Brushes.Red;
-        }
-
-        private void Buttun_SaveUserList_Changes_Click(object sender, RoutedEventArgs e)
-        {
-            //UpdateGroupsMembers(listOfGroups);
-        }
-
-        
     }
 }
