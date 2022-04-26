@@ -10,7 +10,7 @@ namespace BLL
     {
         public string Name { get; set; }
         
-        public List<User> Users { get; set; }
+        public List<User> Users { get; set; } = new List<User>();
 
 
         public Group(string name)
@@ -18,14 +18,5 @@ namespace BLL
             Name = name;
         }
 
-        public void AddUser(User user)
-        {
-            if (user.Group == Name)
-            {
-                Users.Add(user);
-            }
-        }
-
-        
     }
 }
