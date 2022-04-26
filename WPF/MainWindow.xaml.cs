@@ -27,12 +27,6 @@ namespace WPF
         public List<Group> listOfGroups = new List<Group> {new Group("Other")};
 
 
-
-        public void AddGroup(string groupsName)
-        {
-            listOfGroups.Add(new Group(groupsName));
-        }
-
         public string GetGroupsInfo(List<Group> listOfGroups)
         {
             string info = "";
@@ -50,6 +44,10 @@ namespace WPF
         {
             InitializeComponent();
             ListBox_Groups.ItemsSource = listOfGroups;
+            ListBox_Users.ItemsSource = listOfUsers;
+            ComboBox_Groups.ItemsSource = listOfGroups;
+            listOfGroups[0].Users = listOfUsers;
+
         }
 
         private void ComboBoxQuestion_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -100,8 +98,9 @@ namespace WPF
         private void ButtonAddGroup_Click(object sender, RoutedEventArgs e)
         {
             string groupName = TextBoxAddGroup.Text;
-            AddGroup(groupName);
+            listOfGroups.Add(new Group(groupName));
             ListBox_Groups.Items.Refresh();
+            ComboBox_Groups.Items.Refresh();
         }
 
         
@@ -114,6 +113,17 @@ namespace WPF
 
 
         private void TextBoxAddGroup_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void ListBox_Groups_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ListBox_UsersOfGroup.ItemsSource = listOfGroups[ListBox_Groups.SelectedIndex].Users;
+            ListBox_UsersOfGroup.Items.Refresh();
+        }
+
+        private void ComboBox_Groups_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }

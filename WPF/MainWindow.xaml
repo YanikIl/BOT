@@ -54,13 +54,14 @@
                         <RowDefinition Height="87*"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="371*"/>
-                        <ColumnDefinition Width="373*"/>
+                        <ColumnDefinition Width="42*"/>
+                        <ColumnDefinition Width="553*"/>
+                        <ColumnDefinition Width="599*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBox x:Name="TextBoxAddGroup" HorizontalAlignment="Left" Margin="22,349,0,0" TextWrapping="Wrap" Text="Add New Group" VerticalAlignment="Top" Width="324" Height="29" FontSize="14" MouseDoubleClick="TextBoxAddGroup_MouseDoubleClick" TextChanged="TextBoxAddGroup_TextChanged" />
-                    <Button x:Name="ButtonAddGroup" Content="Submit" HorizontalAlignment="Left" Margin="351,349,0,0" VerticalAlignment="Top" Height="29" Width="77" Click="ButtonAddGroup_Click"/>
-                    <Label x:Name="LabelListGroups" Content="List Of Groups" HorizontalAlignment="Left" VerticalAlignment="Top" Width="218" FontSize="14" FontStretch="Medium" FontWeight="Medium" Height="29" Margin="22,6,0,0"/>
-                    <ListBox x:Name="ListBox_Groups" Margin="22,40,0,76" HorizontalAlignment="Left" Width="406" >
+                    <TextBox x:Name="TextBoxAddGroup" HorizontalAlignment="Left" Margin="10,334,0,0" TextWrapping="Wrap" Text="Add New Group" VerticalAlignment="Top" Width="324" Height="30" MouseDoubleClick="TextBoxAddGroup_MouseDoubleClick" TextChanged="TextBoxAddGroup_TextChanged" Grid.Column="2" />
+                    <Button x:Name="ButtonAddGroup" Content="Add" HorizontalAlignment="Left" Margin="339,334,0,0" VerticalAlignment="Top" Height="30" Width="77" Click="ButtonAddGroup_Click" Grid.Column="2"/>
+                    <Label x:Name="LabelListGroups" Content="Groups" HorizontalAlignment="Left" VerticalAlignment="Top" Width="218" FontSize="14" FontStretch="Medium" FontWeight="Medium" Height="29" Margin="10,6,0,0" Grid.Column="2"/>
+                    <ListBox x:Name="ListBox_Groups" Margin="10,40,0,76" HorizontalAlignment="Left" Width="406" SelectionChanged="ListBox_Groups_SelectionChanged" Grid.Column="2" >
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
@@ -69,8 +70,35 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                    <Label x:Name="LabelList_UsersOfGroup" Content="Users Of Group&#xA;" HorizontalAlignment="Left" VerticalAlignment="Top" Width="218" FontSize="14" FontStretch="Medium" FontWeight="Medium" Height="29" Margin="22,415,0,0" Grid.RowSpan="2"/>
-                    <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Margin="22,45,167,22" Grid.Row="1"/>
+                    <Label x:Name="LabelList_UsersOfGroup" Content="Users Of Group&#xA;" HorizontalAlignment="Left" VerticalAlignment="Top" Width="218" FontSize="14" FontStretch="Medium" FontWeight="Medium" Height="29" Margin="10,10,0,0" Grid.Column="2" Grid.Row="1"/>
+                    <ListBox x:Name="ListBox_UsersOfGroup" Margin="10,39,182,28" Grid.Row="1" Grid.Column="2">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <TextBlock Text="{Binding Name}" Grid.Column="1"></TextBlock>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    <Label x:Name="LabelListGroups_Copy" Content="Users" HorizontalAlignment="Left" VerticalAlignment="Top" Width="218" FontSize="14" FontStretch="Medium" FontWeight="Medium" Height="30" Margin="10,10,0,0" Grid.ColumnSpan="2"/>
+                    <ListBox x:Name="ListBox_Users" Margin="10,40,0,76" HorizontalAlignment="Left" Width="406" SelectionChanged="ListBox_Groups_SelectionChanged" Grid.ColumnSpan="2" >
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <TextBlock Text="{Binding Name}" Grid.Column="1"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    <ComboBox x:Name="ComboBox_Groups" HorizontalAlignment="Left" Margin="10,338,0,0" VerticalAlignment="Top" Width="406" Height="30" Grid.ColumnSpan="2">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <TextBlock Text="{Binding Name}" Grid.Column="1"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
                 </Grid>
             </TabItem>
 
