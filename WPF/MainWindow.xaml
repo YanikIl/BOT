@@ -81,7 +81,7 @@
                         </ListBox.ItemTemplate>
                     </ListBox>
                     <Label x:Name="LabelListGroups_Copy" Content="Users" HorizontalAlignment="Left" VerticalAlignment="Top" Width="218" FontSize="14" FontStretch="Medium" FontWeight="Medium" Height="30" Margin="10,10,0,0" Grid.ColumnSpan="2"/>
-                    <ListBox x:Name="ListBox_Users" Margin="10,40,0,76" HorizontalAlignment="Left" Width="406" SelectionChanged="ListBox_Groups_SelectionChanged" Grid.ColumnSpan="2" >
+                    <ListBox x:Name="ListBox_Users" Margin="10,40,0,76" HorizontalAlignment="Left" Width="406" Grid.ColumnSpan="2" >
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
