@@ -17,12 +17,12 @@ namespace BLL
             Group = "Other";
         }
 
-        public void ChangeName(User user, string newName)
+        public void ChangeName(string newName)
         {
             Name = newName;
         }
 
-        public void ChangeGroup(User user, string newGroup)
+        public void ChangeGroup(string newGroup)
         {
             Group = newGroup;
         }

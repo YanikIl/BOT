@@ -22,10 +22,34 @@ namespace WPF
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        public List<User> listOfUsers = UsersMock.GetUsersListMock();
+        public List<Group> listOfGroups = new List<Group> {new Group("Other")};
+
+
+
+        public void AddGroup(string groupsName)
+        {
+            listOfGroups.Add(new Group(groupsName));
+        }
+
+        public string GetGroupsInfo(List<Group> listOfGroups)
+        {
+            string info = "";
+
+            foreach (Group crnt in listOfGroups)
+            {
+                info += crnt.Name;
+                info += "\n";
+            }
+
+            return info;
+        }
+
         public MainWindow()
         {
             InitializeComponent();
-            UsersList.ItemsSource = UsersMock.GetUsersListMock();
+            ListBox_Groups.ItemsSource = listOfGroups;
         }
 
         private void ComboBoxQuestion_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -71,7 +95,25 @@ namespace WPF
             }
         }
 
-        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+
+
+        private void ButtonAddGroup_Click(object sender, RoutedEventArgs e)
+        {
+            string groupName = TextBoxAddGroup.Text;
+            AddGroup(groupName);
+            ListBox_Groups.Items.Refresh();
+        }
+
+        
+
+        private void TextBoxAddGroup_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            TextBoxAddGroup.Text = "";
+        }
+
+
+
+        private void TextBoxAddGroup_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
