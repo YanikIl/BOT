@@ -47,7 +47,7 @@
                 </Grid>
             </TabItem>
             <TabItem Content="" Header="Tests" />
-            <TabItem Header="Users and Groups" Height="22" Margin="-2,0,-2,0" VerticalAlignment="Bottom" >
+            <TabItem Header="Users and Groups" Height="22" Margin="-2,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Width="110" >
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="106*"/>
@@ -69,8 +69,8 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                    <Label x:Name="LabelList_UsersOfGroup" Content="Users Of Group&#xA;" HorizontalAlignment="Left" VerticalAlignment="Top" Width="218" FontSize="14" FontStretch="Medium" FontWeight="Medium" Height="29" Margin="22,415,0,0" Grid.RowSpan="2"/>
-                    <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Margin="22,45,167,22" Grid.Row="1"/>
+                    <Label x:Name="LabelList_UsersOfGroup" Content="Users Of Group&#xA;" HorizontalAlignment="Left" VerticalAlignment="Top" Width="218" FontSize="14" FontStretch="Medium" FontWeight="Medium" Height="29" Margin="22,10,0,0" Grid.Row="0" Grid.Column="1" RenderTransformOrigin="3.47,-10.292"/>
+                    <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Margin="22,45,167,22" Grid.Row="0" Grid.Column="1"/>
                 </Grid>
             </TabItem>
 

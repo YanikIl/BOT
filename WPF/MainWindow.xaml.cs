@@ -22,6 +22,9 @@ namespace WPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        private TelegramManeger _telegramManager;
+        private const string _token = "5361971025:AAFZPT93Oh3qrcnm0BlL4xPzkFbFquIoJ6Y";
+        private List<string> _labels;
 
         public List<User> listOfUsers = UsersMock.GetUsersListMock();
         public List<Group> listOfGroups = new List<Group> {new Group("Other")};
