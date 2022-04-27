@@ -111,7 +111,6 @@ namespace WPF
         }
 
 
-
         private void TextBoxAddGroup_TextChanged(object sender, TextChangedEventArgs e)
         {
 
@@ -124,6 +123,11 @@ namespace WPF
         }
 
         private void ComboBox_Groups_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void TextBox_ChangeUserName_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
 
         }
