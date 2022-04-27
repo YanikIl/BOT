@@ -23,15 +23,14 @@ namespace WPF
     public partial class MainWindow : Window
     {
 
-        public List<User> listOfUsers = UsersMock.GetUsersListMock();
-        public List<Group> listOfGroups = new List<Group> {new Group("Other")};
+        //public List<User> listOfUsers = UsersMock.GetUsersListMock();
+        public List<Group> listOfGroups = new List<Group> { new Group("Other", UsersMock.GetUsersListMock()) };
 
         public MainWindow()
         {
             InitializeComponent();
             ListBox_Groups.ItemsSource = listOfGroups;
             ComboBox_Groups.ItemsSource = listOfGroups;
-            listOfGroups[0].Users = listOfUsers;
 
         }
 
@@ -83,7 +82,7 @@ namespace WPF
         private void ButtonAddGroup_Click(object sender, RoutedEventArgs e)
         {
             string groupName = TextBoxAddGroup.Text;
-            listOfGroups.Add(new Group(groupName));
+            listOfGroups.Add(new Group(groupName, new List<User>()));
             ListBox_Groups.Items.Refresh();
             ComboBox_Groups.Items.Refresh();
             TextBoxAddGroup.Text = "";
@@ -120,9 +119,8 @@ namespace WPF
 
         private void Button_ChangeGroup_Click(object sender, RoutedEventArgs e)
         {
-            listOfGroups[ComboBox_Groups.SelectedIndex].Users.Add(listOfUsers[ListBox_UsersOfGroup.SelectedIndex]);
-            listOfGroups[ListBox_Groups.SelectedIndex].Users.Remove(listOfUsers[ListBox_UsersOfGroup.SelectedIndex]);
-            //listOfUsers[ListBox_UsersOfGroup.SelectedIndex].Group = ComboBox_Groups.SelectedItem.ToString();
+            listOfGroups[ComboBox_Groups.SelectedIndex].Users.Add((User)ListBox_UsersOfGroup.SelectedItem);
+            listOfGroups[ListBox_Groups.SelectedIndex].Users.Remove((User)ListBox_UsersOfGroup.SelectedItem);
             ListBox_UsersOfGroup.Items.Refresh();
         }
     }
