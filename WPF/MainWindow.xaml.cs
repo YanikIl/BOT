@@ -127,9 +127,10 @@ namespace WPF
 
         }
 
-        private void TextBox_ChangeUserName_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void ListBox_Users_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            ComboBox_Groups.IsEnabled = true;
+            Button_ChangeGroup.IsEnabled = true;
         }
     }
 }

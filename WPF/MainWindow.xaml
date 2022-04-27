@@ -58,10 +58,10 @@
                         <ColumnDefinition Width="553*"/>
                         <ColumnDefinition Width="599*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBox x:Name="TextBoxAddGroup" HorizontalAlignment="Left" Margin="10,334,0,0" TextWrapping="Wrap" Text="Add New Group" VerticalAlignment="Top" Width="324" Height="30" MouseDoubleClick="TextBoxAddGroup_MouseDoubleClick" TextChanged="TextBoxAddGroup_TextChanged" Grid.Column="2" />
-                    <Button x:Name="ButtonAddGroup" Content="Add" HorizontalAlignment="Left" Margin="339,334,0,0" VerticalAlignment="Top" Height="30" Width="77" Click="ButtonAddGroup_Click" Grid.Column="2"/>
-                    <Label x:Name="LabelListGroups" Content="Groups" HorizontalAlignment="Left" VerticalAlignment="Top" Width="218" FontSize="14" FontStretch="Medium" FontWeight="Medium" Height="29" Margin="10,6,0,0" Grid.Column="2"/>
-                    <ListBox x:Name="ListBox_Groups" Margin="10,40,0,76" HorizontalAlignment="Left" Width="406" SelectionChanged="ListBox_Groups_SelectionChanged" Grid.Column="2" >
+                    <TextBox x:Name="TextBoxAddGroup" HorizontalAlignment="Left" Margin="5,332,0,0" TextWrapping="Wrap" Text="Add New Group" VerticalAlignment="Top" Width="324" Height="30" MouseDoubleClick="TextBoxAddGroup_MouseDoubleClick" TextChanged="TextBoxAddGroup_TextChanged" Grid.Column="1" />
+                    <Button x:Name="ButtonAddGroup" Content="Add" HorizontalAlignment="Left" Margin="334,332,0,0" VerticalAlignment="Top" Height="30" Width="77" Click="ButtonAddGroup_Click" Grid.Column="1"/>
+                    <Label x:Name="LabelListGroups" Content="Groups" HorizontalAlignment="Left" VerticalAlignment="Top" Width="218" FontSize="14" FontStretch="Medium" FontWeight="Medium" Height="29" Margin="5,4,0,0" Grid.Column="1"/>
+                    <ListBox x:Name="ListBox_Groups" Margin="5,38,0,78" HorizontalAlignment="Left" Width="406" SelectionChanged="ListBox_Groups_SelectionChanged" Grid.Column="1" >
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
@@ -70,8 +70,8 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                    <Label x:Name="Label_UsersOfGroup" Content="Users Of Group&#xA;" HorizontalAlignment="Left" VerticalAlignment="Top" Width="218" FontSize="14" FontStretch="Medium" FontWeight="Medium" Height="29" Margin="10,10,0,0" Grid.Column="2" Grid.Row="1"/>
-                    <ListBox x:Name="ListBox_UsersOfGroup" Margin="10,39,182,28" Grid.Row="1" Grid.Column="2">
+                    <Label x:Name="Label_UsersOfGroup" Content="Users Of Group&#xA;" HorizontalAlignment="Left" VerticalAlignment="Top" Width="218" FontSize="14" FontStretch="Medium" FontWeight="Medium" Height="29" Margin="10,2,0,0" Grid.Column="1" Grid.Row="1"/>
+                    <ListBox x:Name="ListBox_UsersOfGroup" Margin="10,31,136,36" Grid.Row="1" Grid.Column="1">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
@@ -80,20 +80,19 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                    <Label x:Name="Label_ListUsers" Content="Users" HorizontalAlignment="Left" VerticalAlignment="Top" Width="218" FontSize="14" FontStretch="Medium" FontWeight="Medium" Height="30" Margin="10,10,0,0" Grid.ColumnSpan="2"/>
-                    <ListBox x:Name="ListBox_Users" HorizontalContentAlignment="Stretch" Margin="10,40,0,76" HorizontalAlignment="Left" Width="406" Grid.ColumnSpan="2" >
+                    <Label x:Name="Label_ListUsers" Content="Users" HorizontalAlignment="Left" VerticalAlignment="Top" Width="218" FontSize="14" FontStretch="Medium" FontWeight="Medium" Height="30" Margin="11,10,0,0" Grid.Column="2"/>
+                    <ListBox x:Name="ListBox_Users" HorizontalContentAlignment="Stretch" Margin="11,40,0,76" HorizontalAlignment="Left" Width="406" AutomationProperties.IsColumnHeader="True" SelectionChanged="ListBox_Users_SelectionChanged" Grid.Column="2" >
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"></ColumnDefinition>
-                                    </Grid.ColumnDefinitions>
-                                    <TextBox HorizontalAlignment="Stretch" Text="{Binding Name}" Grid.Column="1" />
+                                    <TextBox Margin="20,2,20,2" HorizontalAlignment="Stretch" Text="{Binding Name}" Grid.Column="1" />
                                 </Grid>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                    <ComboBox x:Name="ComboBox_Groups" HorizontalAlignment="Left" Margin="10,337,0,0" VerticalAlignment="Top" Width="347" Height="30" Grid.ColumnSpan="2" IsEnabled="False">
+
+
+                    <ComboBox x:Name="ComboBox_Groups" HorizontalAlignment="Left" Margin="11,337,0,0" VerticalAlignment="Top" Width="347" Height="30" IsEnabled="False" Grid.Column="2">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
@@ -102,7 +101,8 @@
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>
-                    <Button x:Name="Button_AddUserIntoGroup" Grid.Column="1" Content="Add" HorizontalAlignment="Left" Margin="320,337,0,0" VerticalAlignment="Top" Height="30" Width="54" IsEnabled="False"/>
+                    <Button x:Name="Button_ChangeGroup" Grid.Column="2" Content="Change" HorizontalAlignment="Left" Margin="363,337,0,0" VerticalAlignment="Top" Height="30" Width="54" IsEnabled="False"/>
+
                 </Grid>
             </TabItem>
 
