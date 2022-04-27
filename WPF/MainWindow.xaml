@@ -92,7 +92,7 @@
                     </ListBox>
 
 
-                    <ComboBox x:Name="ComboBox_Groups" HorizontalAlignment="Left" Margin="11,337,0,0" VerticalAlignment="Top" Width="347" Height="30" IsEnabled="False" Grid.Column="2">
+                    <ComboBox x:Name="ComboBox_Groups" HorizontalAlignment="Left" Margin="11,337,0,0" VerticalAlignment="Top" Width="347" Height="30" IsEnabled="False" Grid.Column="2" SelectionChanged="ComboBox_Groups_SelectionChanged">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
@@ -101,7 +101,7 @@
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>
-                    <Button x:Name="Button_ChangeGroup" Grid.Column="2" Content="Change" HorizontalAlignment="Left" Margin="363,337,0,0" VerticalAlignment="Top" Height="30" Width="54" IsEnabled="False"/>
+                    <Button x:Name="Button_ChangeGroup" Grid.Column="2" Content="Change" HorizontalAlignment="Left" Margin="363,337,0,0" VerticalAlignment="Top" Height="30" Width="54" IsEnabled="False" Click="Button_ChangeGroup_Click"/>
 
                 </Grid>
             </TabItem>

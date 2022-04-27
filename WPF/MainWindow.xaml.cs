@@ -26,20 +26,6 @@ namespace WPF
         public List<User> listOfUsers = UsersMock.GetUsersListMock();
         public List<Group> listOfGroups = new List<Group> {new Group("Other")};
 
-
-        public string GetGroupsInfo(List<Group> listOfGroups)
-        {
-            string info = "";
-
-            foreach (Group crnt in listOfGroups)
-            {
-                info += crnt.Name;
-                info += "\n";
-            }
-
-            return info;
-        }
-
         public MainWindow()
         {
             InitializeComponent();
@@ -101,9 +87,11 @@ namespace WPF
             listOfGroups.Add(new Group(groupName));
             ListBox_Groups.Items.Refresh();
             ComboBox_Groups.Items.Refresh();
+            TextBoxAddGroup.Text = "";
+
         }
 
-        
+
 
         private void TextBoxAddGroup_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
@@ -122,15 +110,35 @@ namespace WPF
             ListBox_UsersOfGroup.Items.Refresh();
         }
 
-        private void ComboBox_Groups_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
+        
 
         private void ListBox_Users_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ComboBox_Groups.IsEnabled = true;
             Button_ChangeGroup.IsEnabled = true;
+        }
+
+        private void ComboBox_Groups_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //if (listOfUsers[ListBox_Users.SelectedIndex].Group != listOfGroups[ComboBox_Groups.SelectedIndex].Name)
+            //{
+            //    Button_ChangeGroup.IsEnabled = true;
+            //}
+            
+        }
+
+        private void Button_ChangeGroup_Click(object sender, RoutedEventArgs e)
+        {
+            listOfGroups[ComboBox_Groups.SelectedIndex].Users.Add(listOfUsers[ListBox_Users.SelectedIndex]);
+            foreach (Group group in listOfGroups)
+            {
+                if (group.Name == listOfUsers[ListBox_Users.SelectedIndex].Group)
+                {
+                    group.Users.Remove(listOfUsers[ListBox_Users.SelectedIndex]);
+                }
+            }
+            listOfUsers[ListBox_Users.SelectedIndex].Group = listOfGroups[ComboBox_Groups.SelectedIndex].Name;
+            
         }
     }
 }

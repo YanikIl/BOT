@@ -16,6 +16,8 @@
                 new User("Andreika"),
                 new User("Ebobo Ololo"),
                 new User("Susanna"),
+                new User(""),
+
             };
             return usersMock;
         }
