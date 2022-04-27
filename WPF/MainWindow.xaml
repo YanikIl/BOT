@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF"
         mc:Ignorable="d"
-        Title="ChatBot" Height="800" Width="1200">
+        Title="ChatBot" Height="600" Width="1000">
     <Grid>
-        <TabControl HorizontalAlignment="Center" Height="764" VerticalAlignment="Center" Width="1200">
+        <TabControl HorizontalAlignment="Left" Height="590" VerticalAlignment="Center" Width="990" Margin="0">
             <TabItem Header="Create Questions">
                 <Grid Background="#FFE5E5E5" Height="712">
                     <Grid.ColumnDefinitions>
@@ -54,14 +54,14 @@
                         <RowDefinition Height="87*"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="42*"/>
-                        <ColumnDefinition Width="553*"/>
-                        <ColumnDefinition Width="599*"/>
+                        <ColumnDefinition Width="7*"/>
+                        <ColumnDefinition Width="237*"/>
+                        <ColumnDefinition Width="248*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBox x:Name="TextBoxAddGroup" HorizontalAlignment="Left" Margin="5,332,0,0" TextWrapping="Wrap" Text="Add New Group" VerticalAlignment="Top" Width="324" Height="30" MouseDoubleClick="TextBoxAddGroup_MouseDoubleClick" TextChanged="TextBoxAddGroup_TextChanged" Grid.Column="1" />
-                    <Button x:Name="ButtonAddGroup" Content="Add" HorizontalAlignment="Left" Margin="334,332,0,0" VerticalAlignment="Top" Height="30" Width="77" Click="ButtonAddGroup_Click" Grid.Column="1"/>
+                    <TextBox x:Name="TextBoxAddGroup" HorizontalAlignment="Left" Margin="5,235,0,0" TextWrapping="Wrap" Text="Add New Group" VerticalAlignment="Top" Width="283" Height="30" MouseDoubleClick="TextBoxAddGroup_MouseDoubleClick" TextChanged="TextBoxAddGroup_TextChanged" Grid.Column="1" />
+                    <Button x:Name="ButtonAddGroup" Content="Add" HorizontalAlignment="Left" Margin="294,235,0,0" VerticalAlignment="Top" Height="30" Width="77" Click="ButtonAddGroup_Click" Grid.Column="1"/>
                     <Label x:Name="LabelListGroups" Content="Groups" HorizontalAlignment="Left" VerticalAlignment="Top" Width="218" FontSize="14" FontStretch="Medium" FontWeight="Medium" Height="29" Margin="5,4,0,0" Grid.Column="1"/>
-                    <ListBox x:Name="ListBox_Groups" Margin="5,38,0,78" HorizontalAlignment="Left" Width="406" SelectionChanged="ListBox_Groups_SelectionChanged" Grid.Column="1" >
+                    <ListBox x:Name="ListBox_Groups" Margin="5,38,0,78" HorizontalAlignment="Left" Width="367" SelectionChanged="ListBox_Groups_SelectionChanged" Grid.Column="1" >
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
@@ -70,21 +70,12 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                    <Label x:Name="Label_UsersOfGroup" Content="Users Of Group&#xA;" HorizontalAlignment="Left" VerticalAlignment="Top" Width="218" FontSize="14" FontStretch="Medium" FontWeight="Medium" Height="29" Margin="10,2,0,0" Grid.Column="1" Grid.Row="1"/>
-                    <ListBox x:Name="ListBox_UsersOfGroup" Margin="10,31,136,36" Grid.Row="1" Grid.Column="1">
+                    <Label x:Name="Label_UsersOfGroup" Content="Users Of Groups" HorizontalAlignment="Left" VerticalAlignment="Top" Width="218" FontSize="14" FontStretch="Medium" FontWeight="Medium" Height="29" Margin="10,4,0,0" Grid.Column="2"/>
+                    <ListBox x:Name="ListBox_UsersOfGroup" HorizontalContentAlignment="Stretch" Margin="10,38,154,78" Grid.Column="2" SelectionChanged="ListBox_UsersOfGroup_SelectionChanged_1">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
-                                    <TextBlock Text="{Binding Name}" Grid.Column="1"></TextBlock>
-                                </Grid>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
-                    <Label x:Name="Label_ListUsers" Content="Users" HorizontalAlignment="Left" VerticalAlignment="Top" Width="218" FontSize="14" FontStretch="Medium" FontWeight="Medium" Height="30" Margin="11,10,0,0" Grid.Column="2"/>
-                    <ListBox x:Name="ListBox_Users" HorizontalContentAlignment="Stretch" Margin="11,40,0,76" HorizontalAlignment="Left" Width="406" AutomationProperties.IsColumnHeader="True" SelectionChanged="ListBox_Users_SelectionChanged" Grid.Column="2" >
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <Grid>
+                                    <!--<TextBlock Text="{Binding Name}" Grid.Column="1"></TextBlock>-->
                                     <TextBox Margin="20,2,20,2" HorizontalAlignment="Stretch" Text="{Binding Name}" Grid.Column="1" />
                                 </Grid>
                             </DataTemplate>
@@ -92,7 +83,7 @@
                     </ListBox>
 
 
-                    <ComboBox x:Name="ComboBox_Groups" HorizontalAlignment="Left" Margin="11,337,0,0" VerticalAlignment="Top" Width="347" Height="30" IsEnabled="False" Grid.Column="2" SelectionChanged="ComboBox_Groups_SelectionChanged">
+                    <ComboBox x:Name="ComboBox_Groups" HorizontalAlignment="Left" Margin="10,234,0,0" VerticalAlignment="Top" Width="273" Height="30" IsEnabled="False" Grid.Column="2">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
@@ -101,7 +92,7 @@
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>
-                    <Button x:Name="Button_ChangeGroup" Grid.Column="2" Content="Change" HorizontalAlignment="Left" Margin="363,337,0,0" VerticalAlignment="Top" Height="30" Width="54" IsEnabled="False" Click="Button_ChangeGroup_Click"/>
+                    <Button x:Name="Button_ChangeGroup" Grid.Column="2" Content="Change" HorizontalAlignment="Left" Margin="288,234,0,0" VerticalAlignment="Top" Height="30" Width="54" IsEnabled="False" Click="Button_ChangeGroup_Click"/>
 
                 </Grid>
             </TabItem>

@@ -30,7 +30,6 @@ namespace WPF
         {
             InitializeComponent();
             ListBox_Groups.ItemsSource = listOfGroups;
-            ListBox_Users.ItemsSource = listOfUsers;
             ComboBox_Groups.ItemsSource = listOfGroups;
             listOfGroups[0].Users = listOfUsers;
 
@@ -112,33 +111,19 @@ namespace WPF
 
         
 
-        private void ListBox_Users_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ListBox_UsersOfGroup_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ComboBox_Groups.IsEnabled = true;
             Button_ChangeGroup.IsEnabled = true;
         }
 
-        private void ComboBox_Groups_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            //if (listOfUsers[ListBox_Users.SelectedIndex].Group != listOfGroups[ComboBox_Groups.SelectedIndex].Name)
-            //{
-            //    Button_ChangeGroup.IsEnabled = true;
-            //}
-            
-        }
 
         private void Button_ChangeGroup_Click(object sender, RoutedEventArgs e)
         {
-            listOfGroups[ComboBox_Groups.SelectedIndex].Users.Add(listOfUsers[ListBox_Users.SelectedIndex]);
-            foreach (Group group in listOfGroups)
-            {
-                if (group.Name == listOfUsers[ListBox_Users.SelectedIndex].Group)
-                {
-                    group.Users.Remove(listOfUsers[ListBox_Users.SelectedIndex]);
-                }
-            }
-            listOfUsers[ListBox_Users.SelectedIndex].Group = listOfGroups[ComboBox_Groups.SelectedIndex].Name;
-            
+            listOfGroups[ComboBox_Groups.SelectedIndex].Users.Add(listOfUsers[ListBox_UsersOfGroup.SelectedIndex]);
+            listOfGroups[ListBox_Groups.SelectedIndex].Users.Remove(listOfUsers[ListBox_UsersOfGroup.SelectedIndex]);
+            //listOfUsers[ListBox_UsersOfGroup.SelectedIndex].Group = ComboBox_Groups.SelectedItem.ToString();
+            ListBox_UsersOfGroup.Items.Refresh();
         }
     }
 }

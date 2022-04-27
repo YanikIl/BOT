@@ -15,9 +15,7 @@
                 new User("Boris"),
                 new User("Andreika"),
                 new User("Ebobo Ololo"),
-                new User("Susanna"),
-                new User(""),
-
+                new User("Susanna")
             };
             return usersMock;
         }
