@@ -90,7 +90,7 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                    <ComboBox x:Name="ComboBox_Groups" HorizontalAlignment="Left" Margin="10,338,0,0" VerticalAlignment="Top" Width="406" Height="30" Grid.ColumnSpan="2">
+                    <ComboBox x:Name="ComboBox_Groups" HorizontalAlignment="Left" Margin="10,371,0,0" VerticalAlignment="Top" Width="347" Height="30" Grid.ColumnSpan="2">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
@@ -99,6 +99,9 @@
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>
+                    <Button x:Name="Button_AddUserIntoGroup" Grid.Column="1" Content="Add" HorizontalAlignment="Left" Margin="320,371,0,0" VerticalAlignment="Top" Height="30" Width="54"/>
+                    <TextBox x:Name="TextBox_ChangeUserName" HorizontalAlignment="Left" Margin="10,332,0,0" TextWrapping="Wrap" Text="New Name" VerticalAlignment="Top" Width="347" Grid.ColumnSpan="2" Height="32"/>
+                    <Button x:Name="Button_ChangeUserName" Grid.Column="1" Content="Change" HorizontalAlignment="Left" Margin="320,332,0,0" VerticalAlignment="Top" Height="32" Width="54" AllowDrop="True"/>
                 </Grid>
             </TabItem>
 
