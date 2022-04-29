@@ -26,20 +26,29 @@ namespace WPF
         private TelegramManager _telegramManager;
         private const string _token = "5361971025:AAFZPT93Oh3qrcnm0BlL4xPzkFbFquIoJ6Y";
         private List<string> _labels;
+        private DispatcherTimer _timer;
 
-        //public List<User> listOfUsers = UsersMock.GetUsersListMock();
         public List<Group> listOfGroups = new List<Group> { new Group("Other", UsersMock.GetUsersListMock()) };
+        //public List<Group> listOfGroups = new List<Group> { new Group("Other", UsersMock.GetUsersListMock()) };
+
+        public MainWindow()
+        {
+            InitializeComponent();
+            ListBox_Groups.ItemsSource = listOfGroups;
+            ComboBox_Groups.ItemsSource = listOfGroups;
+
 
             _telegramManager = new TelegramManager(_token, OnMessage);
             _labels = new List<string>();
-            InitializeComponent();
+
             Chat.ItemsSource = _labels;
             _timer = new DispatcherTimer();
             _timer.Interval = TimeSpan.FromSeconds(1);
             _timer.Tick += OnTick;
             _timer.Start();
-            ListBox_Groups.ItemsSource = listOfGroups;
-            ComboBox_Groups.ItemsSource = listOfGroups;
+
+        }
+
         public void OnMessage(string send)
         {
             _labels.Add(send);
