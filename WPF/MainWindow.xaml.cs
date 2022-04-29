@@ -23,30 +23,14 @@ namespace WPF
     public partial class MainWindow : Window
     {
 
-        public List<User> listOfUsers = UsersMock.GetUsersListMock();
-        public List<Group> listOfGroups = new List<Group> {new Group("Other")};
-
-
-        public string GetGroupsInfo(List<Group> listOfGroups)
-        {
-            string info = "";
-
-            foreach (Group crnt in listOfGroups)
-            {
-                info += crnt.Name;
-                info += "\n";
-            }
-
-            return info;
-        }
+        //public List<User> listOfUsers = UsersMock.GetUsersListMock();
+        public List<Group> listOfGroups = new List<Group> { new Group("Other", UsersMock.GetUsersListMock()) };
 
         public MainWindow()
         {
             InitializeComponent();
             ListBox_Groups.ItemsSource = listOfGroups;
-            ListBox_Users.ItemsSource = listOfUsers;
             ComboBox_Groups.ItemsSource = listOfGroups;
-            listOfGroups[0].Users = listOfUsers;
 
         }
 
@@ -98,18 +82,19 @@ namespace WPF
         private void ButtonAddGroup_Click(object sender, RoutedEventArgs e)
         {
             string groupName = TextBoxAddGroup.Text;
-            listOfGroups.Add(new Group(groupName));
+            listOfGroups.Add(new Group(groupName, new List<User>()));
             ListBox_Groups.Items.Refresh();
             ComboBox_Groups.Items.Refresh();
+            TextBoxAddGroup.Text = "";
+
         }
 
-        
+
 
         private void TextBoxAddGroup_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             TextBoxAddGroup.Text = "";
         }
-
 
 
         private void TextBoxAddGroup_TextChanged(object sender, TextChangedEventArgs e)
@@ -123,9 +108,20 @@ namespace WPF
             ListBox_UsersOfGroup.Items.Refresh();
         }
 
-        private void ComboBox_Groups_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
+        
 
+        private void ListBox_UsersOfGroup_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBox_Groups.IsEnabled = true;
+            Button_ChangeGroup.IsEnabled = true;
+        }
+
+
+        private void Button_ChangeGroup_Click(object sender, RoutedEventArgs e)
+        {
+            listOfGroups[ComboBox_Groups.SelectedIndex].Users.Add((User)ListBox_UsersOfGroup.SelectedItem);
+            listOfGroups[ListBox_Groups.SelectedIndex].Users.Remove((User)ListBox_UsersOfGroup.SelectedItem);
+            ListBox_UsersOfGroup.Items.Refresh();
         }
     }
 }
