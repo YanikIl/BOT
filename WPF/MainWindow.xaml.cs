@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using BLL;
 
 
@@ -22,15 +23,45 @@ namespace WPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        private TelegramManeger _telegramManager;
+        private TelegramManager _telegramManager;
         private const string _token = "5361971025:AAFZPT93Oh3qrcnm0BlL4xPzkFbFquIoJ6Y";
         private List<string> _labels;
 
         public List<User> listOfUsers = UsersMock.GetUsersListMock();
         public List<Group> listOfGroups = new List<Group> {new Group("Other")};
+        private DispatcherTimer _timer;
 
+        public MainWindow()
+        {
+            _telegramManager = new TelegramManager(_token, OnMessage);
+            _labels = new List<string>();
+            
+            InitializeComponent();
 
+            Chat.ItemsSource = _labels;
 
+           // ListUsers.ItemsSource = _labels;
+
+            _timer = new DispatcherTimer();
+            _timer.Interval = TimeSpan.FromSeconds(1);
+            _timer.Tick += OnTick;
+            _timer.Start();
+
+            ListBox_Groups.ItemsSource = listOfGroups;
+        }
+
+        public void OnMessage(string send)
+        {
+            _labels.Add(send);
+        }
+        private void ButtonStart_Click(object sender, RoutedEventArgs e)
+        {
+            _telegramManager.Start();
+        }
+        private void OnTick(object sender, EventArgs e)
+        {
+            Chat.Items.Refresh();
+        }
         public void AddGroup(string groupsName)
         {
             listOfGroups.Add(new Group(groupsName));
@@ -49,11 +80,6 @@ namespace WPF
             return info;
         }
 
-        public MainWindow()
-        {
-            InitializeComponent();
-            ListBox_Groups.ItemsSource = listOfGroups;
-        }
 
         private void ComboBoxQuestion_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -120,5 +146,6 @@ namespace WPF
         {
 
         }
+
     }
 }
