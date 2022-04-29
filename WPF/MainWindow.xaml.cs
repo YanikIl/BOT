@@ -27,29 +27,19 @@ namespace WPF
         private const string _token = "5361971025:AAFZPT93Oh3qrcnm0BlL4xPzkFbFquIoJ6Y";
         private List<string> _labels;
 
-        public List<User> listOfUsers = UsersMock.GetUsersListMock();
-        public List<Group> listOfGroups = new List<Group> {new Group("Other")};
-        private DispatcherTimer _timer;
+        //public List<User> listOfUsers = UsersMock.GetUsersListMock();
+        public List<Group> listOfGroups = new List<Group> { new Group("Other", UsersMock.GetUsersListMock()) };
 
-        public MainWindow()
-        {
             _telegramManager = new TelegramManager(_token, OnMessage);
             _labels = new List<string>();
-            
             InitializeComponent();
-
             Chat.ItemsSource = _labels;
-
-           // ListUsers.ItemsSource = _labels;
-
             _timer = new DispatcherTimer();
             _timer.Interval = TimeSpan.FromSeconds(1);
             _timer.Tick += OnTick;
             _timer.Start();
-
             ListBox_Groups.ItemsSource = listOfGroups;
-        }
-
+            ComboBox_Groups.ItemsSource = listOfGroups;
         public void OnMessage(string send)
         {
             _labels.Add(send);
@@ -62,24 +52,6 @@ namespace WPF
         {
             Chat.Items.Refresh();
         }
-        public void AddGroup(string groupsName)
-        {
-            listOfGroups.Add(new Group(groupsName));
-        }
-
-        public string GetGroupsInfo(List<Group> listOfGroups)
-        {
-            string info = "";
-
-            foreach (Group crnt in listOfGroups)
-            {
-                info += crnt.Name;
-                info += "\n";
-            }
-
-            return info;
-        }
-
 
         private void ComboBoxQuestion_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -129,11 +101,14 @@ namespace WPF
         private void ButtonAddGroup_Click(object sender, RoutedEventArgs e)
         {
             string groupName = TextBoxAddGroup.Text;
-            AddGroup(groupName);
+            listOfGroups.Add(new Group(groupName, new List<User>()));
             ListBox_Groups.Items.Refresh();
+            ComboBox_Groups.Items.Refresh();
+            TextBoxAddGroup.Text = "";
+
         }
 
-        
+
 
         private void TextBoxAddGroup_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
@@ -141,11 +116,31 @@ namespace WPF
         }
 
 
-
         private void TextBoxAddGroup_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
 
+        private void ListBox_Groups_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ListBox_UsersOfGroup.ItemsSource = listOfGroups[ListBox_Groups.SelectedIndex].Users;
+            ListBox_UsersOfGroup.Items.Refresh();
+        }
+
+        
+
+        private void ListBox_UsersOfGroup_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBox_Groups.IsEnabled = true;
+            Button_ChangeGroup.IsEnabled = true;
+        }
+
+
+        private void Button_ChangeGroup_Click(object sender, RoutedEventArgs e)
+        {
+            listOfGroups[ComboBox_Groups.SelectedIndex].Users.Add((User)ListBox_UsersOfGroup.SelectedItem);
+            listOfGroups[ListBox_Groups.SelectedIndex].Users.Remove((User)ListBox_UsersOfGroup.SelectedItem);
+            ListBox_UsersOfGroup.Items.Refresh();
+        }
     }
 }
