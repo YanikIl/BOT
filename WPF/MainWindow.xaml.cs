@@ -186,7 +186,7 @@ namespace WPF
 
         private void Button_AddTestName_Click(object sender, RoutedEventArgs e)
         {
-            listOfTests.Add(new Test(Name = TextBox_TestName.Text));
+            listOfTests.Add(new Test(TextBox_TestName.Text));
             ListBox_ListOfTest.Items.Refresh();
             ListBox_QuOfTest.ItemsSource = listOfTests[0].questions;
 
