@@ -2,18 +2,13 @@
 {
     public abstract class AbstractQuestion
     {
-        private string _question;
-        private string _type;
-        public string Question
-        {
-            get { return _question; }
-            set { _question = value; }
-        }
-        public string Type 
-        { 
-            get { return _type; }
-            protected set { ;} 
-        }
+        public string Name { get; set; }
+        public string Type { get; protected set; }
 
+        public string GetAllInfo()
+        {
+            return $"{Name}, {Type}";
+        }
+        public abstract List<string> GetAnswer();
     }
 }

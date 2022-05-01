@@ -9,15 +9,14 @@ namespace BLL.Questions
     public class Sorting: AbstractQuestion
     {
         public List<string> AnswerOptions;
-
-        public List<string> GetAnswerOptions()
+        public Sorting(string name)
+        {
+            Name = name;
+            Type = "Sorting";
+        }
+        public override List<string> GetAnswer()
         {
             return AnswerOptions;
-        }
-
-        public void AddAnswer(string text, List<string> answerOptions)
-        {
-            answerOptions.Add(text);
         }
 
     }

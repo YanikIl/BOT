@@ -20,8 +20,8 @@
                         <TabItem Header="Select multiple answers from multiple "/>
                         <TabItem Header="Sorting"/>
                     </ComboBox>
-                    <Button Content="Add a question to a test" HorizontalAlignment="Left" Height="28" Margin="405,106,0,0" VerticalAlignment="Top" Width="156" Grid.Column="1"/>
-                    <StackPanel x:Name="StackPanelYesNo" HorizontalAlignment="Left" Height="131" Margin="49,150,0,0" VerticalAlignment="Top" Width="315" Visibility="Hidden" Grid.Column="1">
+                    <Button x:Name="buttonAddQuestion" Content="Add a question to a test" HorizontalAlignment="Left" Height="28" Margin="559,106,0,0" VerticalAlignment="Top" Width="156" Click="buttonAddQuestion_Click"/>
+                    <StackPanel x:Name="StackPanelYesNo" HorizontalAlignment="Left" Height="131" Margin="203,150,0,0" VerticalAlignment="Top" Width="315" Visibility="Hidden">
                         <RadioButton x:Name="RadioButtonYes" Content="Yes" Height="22" Width="142" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                         <RadioButton x:Name="RadioButtonNo" Content="No" Height="21" Width="142"/>
                     </StackPanel>

@@ -118,6 +118,21 @@ namespace WPF
 
         }
 
+        private void buttonAddQuestion_Click(object sender, RoutedEventArgs e)
+        {
+            listBoxTest.Items.Add(TextBoxQuestion.Text);
+        }
+
+        private void buttonEditQuestion_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void buttonDeleteQuestion_Click(object sender, RoutedEventArgs e)
+        {
+            listBoxTest.Items.RemoveAt(1);
+        }
+
 
 
         private void TextBoxAddGroup_MouseDoubleClick(object sender, MouseButtonEventArgs e)

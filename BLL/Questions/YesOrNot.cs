@@ -8,25 +8,16 @@ namespace BLL.Questions
 {
     public class YesOrNot : AbstractQuestion
     {
-        private bool _isYes;
-        private bool _isNo;
-        private string _answerYes;
-        private string _answerNo;
-        public bool IsYes 
+        public YesOrNot(string name)
         {
-            get { return _isYes; }
-            set { _isYes = value; }
+            Name = name;
+            Type = "Yes or not";
         }
-        public bool IsNo
-        {
-            get { return _isNo; }
-            set { _isNo = value; }
-        }
+        public string Answer { get; set; }
 
-        public string AnswerYes
+        public override List<string> GetAnswer()
         {
-            get { return _answerYes; }
-            set { _answerYes = value; }
+            return "";
         }
         public string AnswerNo
         {

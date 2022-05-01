@@ -16,15 +16,14 @@ namespace BLL.Questions
         }
 
         public List<string> AnswerOptions;
-
-        public List<string> GetAnswerOptions()
+        public CheckBoxQuestion(string name)
+        {
+            Name = name;
+            Type = "Check box question";
+        }
+        public override List<string> GetAnswer()
         {
             return AnswerOptions;
-        }
-
-        public void AddAnswer(string text, List<string> answerOptions)
-        {
-            answerOptions.Add(text);
         }
 
     }
