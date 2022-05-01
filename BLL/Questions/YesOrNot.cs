@@ -17,12 +17,7 @@ namespace BLL.Questions
 
         public override List<string> GetAnswer()
         {
-            return "";
-        }
-        public string AnswerNo
-        {
-            get { return _answerNo; }
-            set { _answerNo = value; }
+            return new List<string>();
         }
 
     }

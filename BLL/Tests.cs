@@ -8,7 +8,7 @@ namespace BLL
 {
     internal class Tests
     {
-        public List<AbstractQuestion> Questions { get; private set; };
+        public List<AbstractQuestion> Questions { get; private set; }
 
         public Tests()
         {
@@ -18,7 +18,7 @@ namespace BLL
         // редактирование вопроса в тесте?
         public List<AbstractQuestion> EditQuestion(List<AbstractQuestion> questions, int questionNumber)
         {
-            questions[questionNumber] = new AbstractQuestion();
+            //questions[questionNumber] = new AbstractQuestion();
             return questions;
         }
 

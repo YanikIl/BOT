@@ -120,7 +120,7 @@ namespace WPF
 
         private void buttonAddQuestion_Click(object sender, RoutedEventArgs e)
         {
-            listBoxTest.Items.Add(TextBoxQuestion.Text);
+            //listBoxTest.Items.Add(TextBoxQuestion.Text);
         }
 
         private void buttonEditQuestion_Click(object sender, RoutedEventArgs e)
@@ -130,7 +130,7 @@ namespace WPF
 
         private void buttonDeleteQuestion_Click(object sender, RoutedEventArgs e)
         {
-            listBoxTest.Items.RemoveAt(1);
+            //listBoxTest.Items.RemoveAt(1);
         }
 
 
