@@ -9,15 +9,11 @@
     <Grid>
         <TabControl Height="700" VerticalAlignment="Center" HorizontalAlignment="Center" Width="990" Margin="0">
             <TabItem Header="Create Questions">
-                <Grid Background="#FFE5E5E5" Height="712">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="77*"/>
-                        <ColumnDefinition Width="295*"/>
-                    </Grid.ColumnDefinitions>
-                    <Label Content="Choose the type of question" HorizontalAlignment="Left" Height="28" Margin="24,107,0,0" VerticalAlignment="Top" Width="160" Grid.ColumnSpan="2"/>
-                    <Label Content="Write a question" HorizontalAlignment="Left" Height="29" Margin="24,61,0,0" VerticalAlignment="Top" Width="146" Grid.ColumnSpan="2"/>
-                    <TextBox x:Name="TextBoxQuestion" HorizontalAlignment="Left" Height="29" Margin="49,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="512" Grid.Column="1"/>
-                    <ComboBox x:Name="ComboBoxQuestion" HorizontalAlignment="Left" Height="28" Margin="49,106,0,0" VerticalAlignment="Top" Width="315" IsSynchronizedWithCurrentItem="False" SelectionChanged="ComboBoxQuestion_SelectionChanged" Grid.Column="1">
+                <Grid Background="#FFE5E5E5" Margin="-2,0,-2,0">
+                    <Label Content="Choose the type of question" HorizontalAlignment="Left" Height="28" Margin="24,107,0,0" VerticalAlignment="Top" Width="160"/>
+                    <Label Content="Write a question" HorizontalAlignment="Left" Height="29" Margin="24,61,0,0" VerticalAlignment="Top" Width="146"/>
+                    <TextBox x:Name="TextBoxQuestion" HorizontalAlignment="Left" Height="29" Margin="203,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="512"/>
+                    <ComboBox x:Name="ComboBoxQuestion" HorizontalAlignment="Left" Height="28" Margin="203,106,0,0" VerticalAlignment="Top" Width="315" IsSynchronizedWithCurrentItem="False" SelectionChanged="ComboBoxQuestion_SelectionChanged">
                         <TabItem Header="Yes/No"/>
                         <TabItem Header="Open question"/>
                         <TabItem Header="Choose one answer from several"/>
@@ -29,20 +25,50 @@
                         <RadioButton x:Name="RadioButtonYes" Content="Yes" Height="22" Width="142" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                         <RadioButton x:Name="RadioButtonNo" Content="No" Height="21" Width="142"/>
                     </StackPanel>
-                    <StackPanel x:Name="StackPanelWriteAQuestion" HorizontalAlignment="Left" Height="60" Margin="49,150,0,0" VerticalAlignment="Top" Width="360" Visibility="Hidden" Grid.Column="1">
-                        <TextBox Height="29" TextWrapping="Wrap" Width="361"/>
+                    <StackPanel x:Name="StackPanelWriteAQuestion" HorizontalAlignment="Left" Height="60" Margin="203,150,0,0" VerticalAlignment="Top" Width="360" Visibility="Hidden">
+                        <TextBox x:Name="textBoxAnswer" Height="29" TextWrapping="Wrap" Width="361"/>
                     </StackPanel>
-                    <StackPanel x:Name="StackPanelChooseOneAnswerFromSeveral" HorizontalAlignment="Left" Height="174" Margin="49,150,0,0" VerticalAlignment="Top" Width="315" Visibility="Hidden" Grid.Column="1">
-                        <Button x:Name="ButtonAddAnAswerOption" Content="Add an answer option" Height="29" Width="142"/>
+
+                    <StackPanel x:Name="StackPanelChooseOneAnswerFromSeveral" HorizontalAlignment="Left" Height="174" Margin="203,150,0,0" VerticalAlignment="Top" Width="315" Visibility="Hidden">
+                        
+                        <RadioButton Height="26" Width="315">
+                            <TextBox Height="26" TextWrapping="Wrap" Text="" Width="294"/>
+                        </RadioButton >
+                        <RadioButton Height="26" Width="316">
+                            <TextBox Height="26" TextWrapping="Wrap" Text="" Width="294"/>
+                        </RadioButton >
+                        <RadioButton Height="26" Width="315">
+                            <TextBox Height="26" TextWrapping="Wrap" Text="" Width="294"/>
+                        </RadioButton >
+                        <RadioButton Height="26" Width="316">
+                            <TextBox Height="26" TextWrapping="Wrap" Text="" Width="294"/>
+                        </RadioButton >
                     </StackPanel>
-                    <StackPanel x:Name="StackPanelSelectMultipleAnswersFromMultiple" HorizontalAlignment="Left" Height="170" Margin="49,150,0,0" VerticalAlignment="Top" Width="315" Visibility="Hidden" Grid.Column="1">
-                        <Button x:Name="ButtonAddAnAswerOptionForSorting" Content="Add an answer option" Height="29" Width="260"/>
+
+                    <StackPanel x:Name="StackPanelSelectMultipleAnswersFromMultiple" HorizontalAlignment="Left" Height="170" Margin="203,161,0,0" VerticalAlignment="Top" Width="315" Visibility="Hidden">
+                        <CheckBox  Height="27">
+                            <TextBox Height="29" TextWrapping="Wrap" Text="" Width="295"/>
+                        </CheckBox>
+                        <CheckBox  Height="27">
+                            <TextBox Height="29" TextWrapping="Wrap" Text="" Width="295"/>
+                        </CheckBox>
+                        <CheckBox  Height="27">
+                            <TextBox Height="29" TextWrapping="Wrap" Text="" Width="295"/>
+                        </CheckBox>
+                        <CheckBox  Height="27">
+                            <TextBox Height="29" TextWrapping="Wrap" Text="" Width="295"/>
+                        </CheckBox>
                     </StackPanel>
-                    <StackPanel x:Name="StackPanelSorting" HorizontalAlignment="Left" Height="174" Margin="49,150,0,0" VerticalAlignment="Top" Width="315" Visibility="Hidden" Grid.Column="1">
-                        <Button Content="Add an answer option" Height="33" Width="250"/>
+
+                    <StackPanel x:Name="StackPanelSorting" HorizontalAlignment="Left" Height="174" Margin="203,150,0,0" VerticalAlignment="Top" Width="315" Visibility="Hidden">
+                        <TextBox Height="26" TextWrapping="Wrap" Text="" Width="315"/>
+                        <TextBox Height="26" TextWrapping="Wrap" Text="" Width="315"/>
+                        <TextBox Height="26" TextWrapping="Wrap" Text="" Width="315"/>
+                        <TextBox Height="26" TextWrapping="Wrap" Text="" Width="315"/>
                     </StackPanel>
-                    <Label x:Name="LabelTestName" Content="Test name" HorizontalAlignment="Left" Height="29" Margin="24,17,0,0" VerticalAlignment="Top" Width="137" Grid.ColumnSpan="2"/>
-                    <TextBox HorizontalAlignment="Left" Height="29" Margin="49,16,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="512" Grid.Column="1"/>
+
+                    <Label x:Name="LabelTestName" Content="Test name" HorizontalAlignment="Left" Height="29" Margin="24,17,0,0" VerticalAlignment="Top" Width="137"/>
+                    <TextBox x:Name="textBoxTestName" HorizontalAlignment="Left" Height="29" Margin="203,16,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="512"/>
 
                 </Grid>
             </TabItem>

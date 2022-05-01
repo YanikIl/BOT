@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using BLL;
+using BLL.Questions;
 
 
 namespace WPF
@@ -94,7 +96,6 @@ namespace WPF
                     StackPanelYesNo.Visibility = Visibility.Hidden;
                     StackPanelSorting.Visibility = Visibility.Hidden;
                     break;
-
                 case 4:
                     StackPanelSorting.Visibility = Visibility.Visible;
                     StackPanelSelectMultipleAnswersFromMultiple.Visibility = Visibility.Hidden;

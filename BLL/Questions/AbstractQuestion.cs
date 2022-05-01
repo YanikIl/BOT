@@ -1,13 +1,19 @@
 ﻿namespace BLL
 {
-    public class AbstractQuestion
+    public abstract class AbstractQuestion
     {
-        public string Name { get; set; }
-        public string Type { get; protected set; }
-
-        public void CreateQuestion (string name)
+        private string _question;
+        private string _type;
+        public string Question
         {
-            Name = name;
+            get { return _question; }
+            set { _question = value; }
         }
+        public string Type 
+        { 
+            get { return _type; }
+            protected set { ;} 
+        }
+
     }
 }
