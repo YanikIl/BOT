@@ -11,14 +11,8 @@ namespace BLL.Questions
         public string _answer;
         public string Answer 
         {
-            get 
-            { 
-                return _answer;
-            }
-            set 
-            { 
-                _answer = value;
-            }
+            get { return _answer;}
+            set { _answer = value;}
         }
         public OpenQuestion(string name)
         {

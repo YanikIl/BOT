@@ -19,5 +19,11 @@ namespace BLL.Questions
         {
             return "";
         }
+        public string AnswerNo
+        {
+            get { return _answerNo; }
+            set { _answerNo = value; }
+        }
+
     }
 }
