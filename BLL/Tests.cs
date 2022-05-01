@@ -6,44 +6,28 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    internal class Tests
+    public class Test
     {
-        public List<AbstractQuestion> Questions { get; private set; }
+        public string Name {get; set;}
+        public List<AbstractQuestion> questions { get; set; } = new List<AbstractQuestion>();
 
-        public Tests()
+        public Test(string name)
         {
-            Questions = new List<AbstractQuestion>();
+            Name = name;
         }
 
-        // редактирование вопроса в тесте?
-        public List<AbstractQuestion> EditQuestion(List<AbstractQuestion> questions, int questionNumber)
-        {
-            //questions[questionNumber] = new AbstractQuestion();
-            return questions;
-        }
-
-        public void AddQuestion(AbstractQuestion newQuestion)
-        {
-            Questions.Add(newQuestion);
-        }
-
-
-        public void RemoveQuestionByIndex(int index)
-        {
-            Questions.RemoveAt(index);
-        }
-
-        public string GetAllInfo()
-        {
-            string info = "";
-
-            foreach (AbstractQuestion crnt in Questions)
-            {
-                info += crnt.GetAllInfo();
-                info += "\n";
-            }
-
-            return info;
-        }
+        //public Test GetClone()
+        //{
+        //    string cloneName = Name;
+        //    List<AbstractQuestion> cloneQ = new List<AbstractQuestion>();
+        //    foreach (AbstractQuestion question in questions)
+        //    {
+        //        cloneQ.Add(question.Clone());
+        //    }
+        //    return new Test(cloneName)
+        //    {
+        //        questions = cloneQ
+        //    };
+        //}
     }
 }

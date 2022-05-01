@@ -32,12 +32,14 @@ namespace WPF
 
         public List<Group> listOfGroups = new List<Group> { new Group("Other", UsersMock.GetUsersListMock()) };
         //public List<Group> listOfGroups = new List<Group> { new Group("Other", UsersMock.GetUsersListMock()) };
+        public List<Test> listOfTests = new List<Test> { };
 
         public MainWindow()
         {
             InitializeComponent();
             ListBox_Groups.ItemsSource = listOfGroups;
             ComboBox_Groups.ItemsSource = listOfGroups;
+            ListBox_ListOfTest.ItemsSource = listOfTests;
 
 
             _telegramManager = new TelegramManager(_token, OnMessage);
@@ -69,39 +71,34 @@ namespace WPF
             switch (ComboBoxQuestion.SelectedIndex)
             {
                 case 0:
-                    StackPanelYesNo.Visibility = Visibility.Visible;
-                    StackPanelWriteAQuestion.Visibility = Visibility.Hidden;
+                    StackPanelYesNo.Visibility = Visibility.Hidden;
                     StackPanelChooseOneAnswerFromSeveral.Visibility = Visibility.Hidden;
                     StackPanelSelectMultipleAnswersFromMultiple.Visibility = Visibility.Hidden;
                     StackPanelSorting.Visibility = Visibility.Hidden;
                     break;
                 case 1:
-                    StackPanelWriteAQuestion.Visibility = Visibility.Visible;
-                    StackPanelYesNo.Visibility = Visibility.Hidden;
+                    StackPanelYesNo.Visibility = Visibility.Visible;
                     StackPanelChooseOneAnswerFromSeveral.Visibility = Visibility.Hidden;
                     StackPanelSelectMultipleAnswersFromMultiple.Visibility = Visibility.Hidden;
                     StackPanelSorting.Visibility = Visibility.Hidden;
                     break;
                 case 2:
-                    StackPanelChooseOneAnswerFromSeveral.Visibility = Visibility.Visible;
-                    StackPanelWriteAQuestion.Visibility = Visibility.Hidden;
                     StackPanelYesNo.Visibility = Visibility.Hidden;
+                    StackPanelChooseOneAnswerFromSeveral.Visibility = Visibility.Visible;
                     StackPanelSelectMultipleAnswersFromMultiple.Visibility = Visibility.Hidden;
                     StackPanelSorting.Visibility = Visibility.Hidden;
                     break;
                 case 3:
-                    StackPanelSelectMultipleAnswersFromMultiple.Visibility = Visibility.Visible;
-                    StackPanelChooseOneAnswerFromSeveral.Visibility = Visibility.Hidden;
-                    StackPanelWriteAQuestion.Visibility = Visibility.Hidden;
                     StackPanelYesNo.Visibility = Visibility.Hidden;
+                    StackPanelChooseOneAnswerFromSeveral.Visibility = Visibility.Hidden;
+                    StackPanelSelectMultipleAnswersFromMultiple.Visibility = Visibility.Visible;
                     StackPanelSorting.Visibility = Visibility.Hidden;
                     break;
                 case 4:
-                    StackPanelSorting.Visibility = Visibility.Visible;
-                    StackPanelSelectMultipleAnswersFromMultiple.Visibility = Visibility.Hidden;
-                    StackPanelChooseOneAnswerFromSeveral.Visibility = Visibility.Hidden;
-                    StackPanelWriteAQuestion.Visibility = Visibility.Hidden;
                     StackPanelYesNo.Visibility = Visibility.Hidden;
+                    StackPanelChooseOneAnswerFromSeveral.Visibility = Visibility.Hidden;
+                    StackPanelSelectMultipleAnswersFromMultiple.Visibility = Visibility.Hidden;
+                    StackPanelSorting.Visibility = Visibility.Visible;
                     break;
             }
         }
@@ -166,6 +163,80 @@ namespace WPF
             listOfGroups[ComboBox_Groups.SelectedIndex].Users.Add((User)ListBox_UsersOfGroup.SelectedItem);
             listOfGroups[ListBox_Groups.SelectedIndex].Users.Remove((User)ListBox_UsersOfGroup.SelectedItem);
             ListBox_UsersOfGroup.Items.Refresh();
+        }
+
+        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+
+
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void TextBox_TestName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Button_AddTestName.IsEnabled = true;
+        }
+
+        
+
+        private void Button_AddTestName_Click(object sender, RoutedEventArgs e)
+        {
+            listOfTests.Add(new Test(Name = TextBox_TestName.Text));
+            ListBox_ListOfTest.Items.Refresh();
+            ListBox_QuOfTest.ItemsSource = listOfTests[0].questions;
+
+        }
+
+        private void TextBox_QName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void ComboBox_ChooseQType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Button_ChooseQType.IsEnabled = true;
+        }
+
+        private void Button_ChooseQType_Click(object sender, RoutedEventArgs e)
+        {
+            Label_WriteAQuestion.IsEnabled = true;
+            TextBox_QName.IsEnabled = true;
+            
+            switch (ComboBox_ChooseQType.SelectedIndex)
+            {
+                case 0:
+                    Button_SaveQ.IsEnabled = true;
+                    break;
+                case 1:
+                    
+                    break;
+                case 2:
+                    
+                    break;
+                case 3:
+                    
+                    break;
+                case 4:
+                    
+                    break;
+            }
+        }
+
+        private void Button_SaveQ_Click(object sender, RoutedEventArgs e)
+        {
+            listOfTests[0].questions.Add(new OpenQuestion(TextBox_QName.Text));
+            ListBox_QuOfTest.ItemsSource = listOfTests[0].questions;
+            ListBox_QuOfTest.Items.Refresh();
+        }
+
+        private void ListBox_QuOfTest_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

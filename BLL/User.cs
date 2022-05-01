@@ -14,17 +14,6 @@ namespace BLL
         public User(string name)
         {
             Name = name;
-            //Group = "Other";
         }
-
-        //public void ChangeName(string newName)
-        //{
-        //    Name = newName;
-        //}
-
-        //public void ChangeGroup(string newGroup)
-        //{
-        //    Group = newGroup;
-        //}
     }
 }
