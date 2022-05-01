@@ -37,7 +37,7 @@
                     <Button x:Name="Button_ChooseQType" Content="Choose" Grid.ColumnSpan="4" HorizontalAlignment="Left" Margin="420,35,0,0" VerticalAlignment="Top" Height="22" IsEnabled="False" Click="Button_ChooseQType_Click"/>
                     <Label x:Name="Label_WriteAQuestion" Content="Write a question:" Grid.ColumnSpan="4" HorizontalAlignment="Left" Margin="10,62,0,0" VerticalAlignment="Top" IsEnabled="False"/>
                     <TextBox x:Name="TextBox_QName" HorizontalAlignment="Center" Margin="0,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="344" Grid.Column="3" Height="43" TextChanged="TextBox_QName_TextChanged" IsEnabled="False"/>
-                    <ListBox x:Name="ListBox_QuOfTest" Grid.Column="4" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="ListBox_QuOfTest_SelectionChanged" Margin="0,30,0,10">
+                    <ListBox x:Name="ListBox_QuOfTest" Grid.Column="4" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="ListBox_QuOfTest_SelectionChanged" Margin="0,30,0,106">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
@@ -46,8 +46,8 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                    <Button x:Name="Button_SaveQ" Content="SAVE" Grid.ColumnSpan="4" HorizontalAlignment="Left" Margin="420,93,0,0" VerticalAlignment="Top" Height="43" Click="Button_SaveQ_Click" Width="44" IsEnabled="False"/>
-                    <ListBox x:Name="ListBox_ListOfTest" Grid.Column="4" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,28,0,2">
+                    <Button x:Name="Button_SaveQ" Content="ADD" Grid.ColumnSpan="4" HorizontalAlignment="Left" Margin="420,93,0,0" VerticalAlignment="Top" Height="43" Click="Button_SaveQ_Click" Width="44" IsEnabled="False"/>
+                    <ListBox x:Name="ListBox_ListOfTest" Grid.Column="4" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,28,0,95">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
@@ -58,6 +58,8 @@
                     </ListBox>
                     <Label Grid.Column="4" Content="List Of Questions" HorizontalAlignment="Left" Margin="1,2,0,0" VerticalAlignment="Top"/>
                     <Label Grid.Column="4" Content="List Of Tests" HorizontalAlignment="Left" Margin="1,1,0,0" VerticalAlignment="Top" Grid.Row="1"/>
+                    <RadioButton x:Name="RadioButton_Yes" Content="YES" Grid.ColumnSpan="4" HorizontalAlignment="Left" Margin="72,155,0,0" VerticalAlignment="Top" IsEnabled="False" Checked="RadioButton_Yes_Checked" Visibility="Hidden"/>
+                    <RadioButton x:Name="RadioButton_No" Grid.Column="3" Content="NO" HorizontalAlignment="Left" Margin="72,175,0,0" VerticalAlignment="Top" IsEnabled="False" Checked="RadioButton_No_Checked" Visibility="Hidden"/>
 
 
                 </Grid>

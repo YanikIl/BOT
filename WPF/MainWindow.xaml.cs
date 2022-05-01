@@ -206,14 +206,20 @@ namespace WPF
         {
             Label_WriteAQuestion.IsEnabled = true;
             TextBox_QName.IsEnabled = true;
-            
+
+
             switch (ComboBox_ChooseQType.SelectedIndex)
             {
                 case 0:
                     Button_SaveQ.IsEnabled = true;
+                    RadioButton_Yes.Visibility = Visibility.Hidden;
+                    RadioButton_No.Visibility = Visibility.Hidden;
                     break;
                 case 1:
-                    
+                    RadioButton_Yes.Visibility = Visibility.Visible;
+                    RadioButton_No.Visibility = Visibility.Visible;
+                    RadioButton_Yes.IsEnabled = true;
+                    RadioButton_No.IsEnabled = true;
                     break;
                 case 2:
                     
@@ -229,14 +235,55 @@ namespace WPF
 
         private void Button_SaveQ_Click(object sender, RoutedEventArgs e)
         {
-            listOfTests[0].questions.Add(new OpenQuestion(TextBox_QName.Text));
-            ListBox_QuOfTest.ItemsSource = listOfTests[0].questions;
-            ListBox_QuOfTest.Items.Refresh();
+            switch (ComboBox_ChooseQType.SelectedIndex)
+            {
+                case 0:
+                    listOfTests[0].questions.Add(new OpenQuestion(TextBox_QName.Text));
+                    ListBox_QuOfTest.ItemsSource = listOfTests[0].questions;
+                    ListBox_QuOfTest.Items.Refresh();
+                    break;
+                case 1:
+                    string answer = "";
+                    if (RadioButton_Yes.IsChecked==true)
+                    {
+                        answer = "YES";
+                    }
+                    else
+                    {
+                        answer = "NO";
+                    }
+                    listOfTests[0].questions.Add(new YesOrNot(TextBox_QName.Text, answer));
+                    ListBox_QuOfTest.ItemsSource = listOfTests[0].questions;
+                    ListBox_QuOfTest.Items.Refresh();
+                    break;
+                case 2:
+
+                    break;
+                case 3:
+
+                    break;
+                case 4:
+
+                    break;
+            }
+
+            
+
         }
 
         private void ListBox_QuOfTest_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void RadioButton_Yes_Checked(object sender, RoutedEventArgs e)
+        {
+            Button_SaveQ.IsEnabled = true;
+        }
+
+        private void RadioButton_No_Checked(object sender, RoutedEventArgs e)
+        {
+            Button_SaveQ.IsEnabled = true;
         }
     }
 }
