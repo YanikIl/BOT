@@ -33,15 +33,15 @@ namespace WPF
         public List<Group> listOfGroups = new List<Group> { new Group("Other", UsersMock.GetUsersListMock()) };
         //public List<Group> listOfGroups = new List<Group> { new Group("Other", UsersMock.GetUsersListMock()) };
         public List<Test> listOfTests = new List<Test> { };
-
+        
         public MainWindow()
         {
             InitializeComponent();
             ListBox_Groups.ItemsSource = listOfGroups;
             ComboBox_Groups.ItemsSource = listOfGroups;
             ListBox_ListOfTest.ItemsSource = listOfTests;
-
-
+            ListBox_Tests.ItemsSource = listOfTests;
+            ListBox_Groups1.ItemsSource = listOfGroups;
             _telegramManager = new TelegramManager(_token, OnMessage);
             _labels = new List<string>();
 
