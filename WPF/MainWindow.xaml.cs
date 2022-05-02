@@ -32,16 +32,16 @@ namespace WPF
 
         private GroupsStorage listOfGroups = GroupsStorage.GetInstance();
         //public List<Group> listOfGroups = new List<Group> { new Group("Other", UsersMock.GetUsersListMock()) };
-        //public List<Group> listOfGroups = new List<Group>();
         public List<Test> listOfTests = new List<Test> { };
 
         public MainWindow()
         {
             InitializeComponent();
 
-            
-            listOfGroups.Groups.Add(new Group("Other", UsersMock.GetUsersListMock()));
 
+            //listOfGroups.Groups.Add(new Group("Other", UsersMock.GetUsersListMock()));
+            GroupsController controller = new GroupsController();
+            listOfGroups.Groups = controller.Load();
             ListBox_Groups.ItemsSource = listOfGroups.Groups;
             ComboBox_Groups.ItemsSource = listOfGroups.Groups;
             ListBox_ListOfTest.ItemsSource = listOfTests;

@@ -10,7 +10,7 @@ namespace BLL
 {
     public class GroupsStorage
     {
-        public List<Group> Groups { get; private set; }
+        public List<Group> Groups { get; set; }
 
         private static GroupsStorage _instance;
 

@@ -12,6 +12,11 @@ namespace BLL
         
         public List<User> Users { get; set; } = new List<User>();
 
+        public Group()
+        {
+            Name = "";
+            Users = new List<User>();
+        }
 
         public Group(string name, List<User> users)
         {
