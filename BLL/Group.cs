@@ -19,5 +19,11 @@ namespace BLL
             Users = users;
         }
 
+        public Group(string name)
+        {
+            Name = name;
+            Users = new List<User>();
+        }
+
     }
 }
