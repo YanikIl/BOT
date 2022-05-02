@@ -66,45 +66,7 @@ namespace WPF
             Chat.Items.Refresh();
         }
 
-        private void ComboBoxQuestion_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            switch (ComboBoxQuestion.SelectedIndex)
-            {
-                case 0:
-                    StackPanelYesNo.Visibility = Visibility.Hidden;
-                    StackPanelChooseOneAnswerFromSeveral.Visibility = Visibility.Hidden;
-                    StackPanelSelectMultipleAnswersFromMultiple.Visibility = Visibility.Hidden;
-                    StackPanelSorting.Visibility = Visibility.Hidden;
-                    break;
-                case 1:
-                    StackPanelYesNo.Visibility = Visibility.Visible;
-                    StackPanelChooseOneAnswerFromSeveral.Visibility = Visibility.Hidden;
-                    StackPanelSelectMultipleAnswersFromMultiple.Visibility = Visibility.Hidden;
-                    StackPanelSorting.Visibility = Visibility.Hidden;
-                    break;
-                case 2:
-                    StackPanelYesNo.Visibility = Visibility.Hidden;
-                    StackPanelChooseOneAnswerFromSeveral.Visibility = Visibility.Visible;
-                    StackPanelSelectMultipleAnswersFromMultiple.Visibility = Visibility.Hidden;
-                    StackPanelSorting.Visibility = Visibility.Hidden;
-                    break;
-                case 3:
-                    StackPanelYesNo.Visibility = Visibility.Hidden;
-                    StackPanelChooseOneAnswerFromSeveral.Visibility = Visibility.Hidden;
-                    StackPanelSelectMultipleAnswersFromMultiple.Visibility = Visibility.Visible;
-                    StackPanelSorting.Visibility = Visibility.Hidden;
-                    break;
-                case 4:
-                    StackPanelYesNo.Visibility = Visibility.Hidden;
-                    StackPanelChooseOneAnswerFromSeveral.Visibility = Visibility.Hidden;
-                    StackPanelSelectMultipleAnswersFromMultiple.Visibility = Visibility.Hidden;
-                    StackPanelSorting.Visibility = Visibility.Visible;
-                    break;
-            }
-        }
-
-
-
+        
         private void ButtonAddGroup_Click(object sender, RoutedEventArgs e)
         {
             string groupName = TextBoxAddGroup.Text;
@@ -188,7 +150,7 @@ namespace WPF
         {
             listOfTests.Add(new Test(TextBox_TestName.Text));
             ListBox_ListOfTest.Items.Refresh();
-            ListBox_QuOfTest.ItemsSource = listOfTests[0].questions;
+            ListBox_QuOfTest.ItemsSource = listOfTests[listOfTests.Count-1].questions;
 
         }
 
@@ -218,8 +180,7 @@ namespace WPF
                 case 1:
                     RadioButton_Yes.Visibility = Visibility.Visible;
                     RadioButton_No.Visibility = Visibility.Visible;
-                    RadioButton_Yes.IsEnabled = true;
-                    RadioButton_No.IsEnabled = true;
+                    
                     break;
                 case 2:
                     
@@ -238,9 +199,10 @@ namespace WPF
             switch (ComboBox_ChooseQType.SelectedIndex)
             {
                 case 0:
-                    listOfTests[0].questions.Add(new OpenQuestion(TextBox_QName.Text));
-                    ListBox_QuOfTest.ItemsSource = listOfTests[0].questions;
+                    listOfTests[listOfTests.Count - 1].questions.Add(new OpenQuestion(TextBox_QName.Text));
+                    ListBox_QuOfTest.ItemsSource = listOfTests[listOfTests.Count - 1].questions;
                     ListBox_QuOfTest.Items.Refresh();
+                    Button_SaveTest.IsEnabled = true;
                     break;
                 case 1:
                     string answer = "";
@@ -252,9 +214,10 @@ namespace WPF
                     {
                         answer = "NO";
                     }
-                    listOfTests[0].questions.Add(new YesOrNot(TextBox_QName.Text, answer));
-                    ListBox_QuOfTest.ItemsSource = listOfTests[0].questions;
+                    listOfTests[listOfTests.Count - 1].questions.Add(new YesOrNot(TextBox_QName.Text, answer));
+                    ListBox_QuOfTest.ItemsSource = listOfTests[listOfTests.Count - 1].questions;
                     ListBox_QuOfTest.Items.Refresh();
+                    Button_SaveTest.IsEnabled = true;
                     break;
                 case 2:
 
@@ -284,6 +247,16 @@ namespace WPF
         private void RadioButton_No_Checked(object sender, RoutedEventArgs e)
         {
             Button_SaveQ.IsEnabled = true;
+        }
+
+        private void Button_SaveTest_Click(object sender, RoutedEventArgs e)
+        {
+            Button_SaveTest.IsEnabled = false;
+        }
+
+        private void ListBox_ListOfTest_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ListBox_QuOfTest.ItemsSource = ((Test)ListBox_ListOfTest.SelectedItem).questions;
         }
     }
 }
