@@ -53,7 +53,7 @@ namespace WPF
             ComboBox_Groups.ItemsSource = listOfGroups.Groups;
             ListBox_ListOfTest.ItemsSource = listOfTests;
             ListBox_Tests.ItemsSource = listOfTests;
-            ListBox_Groups1.ItemsSource = listOfGroups;
+            ListBox_Groups1.ItemsSource = listOfGroups.Groups;
             _telegramManager = new TelegramManager(_token, OnMessage);
             _labels = new List<string>();
 
