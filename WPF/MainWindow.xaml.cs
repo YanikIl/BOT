@@ -39,7 +39,7 @@ namespace WPF
         
         //public List<Group> listOfGroups = new List<Group> { new Group("Other", UsersMock.GetUsersListMock()) };
         public List<Test> listOfTests = new List<Test> { };
-
+        
         public MainWindow()
         {
             InitializeComponent();
@@ -52,8 +52,8 @@ namespace WPF
             ListBox_Groups.ItemsSource = listOfGroups.Groups;
             ComboBox_Groups.ItemsSource = listOfGroups.Groups;
             ListBox_ListOfTest.ItemsSource = listOfTests;
-
-
+            ListBox_Tests.ItemsSource = listOfTests;
+            ListBox_Groups1.ItemsSource = listOfGroups;
             _telegramManager = new TelegramManager(_token, OnMessage);
             _labels = new List<string>();
 
