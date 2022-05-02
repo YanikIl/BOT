@@ -31,6 +31,12 @@ namespace WPF
         private DispatcherTimer _timer;
 
         private GroupsStorage listOfGroups = GroupsStorage.GetInstance();
+        private GroupsController controller = new GroupsController();
+        private void CreateFile() 
+        {
+            controller.Save(listOfGroups.Groups);
+        }
+        
         //public List<Group> listOfGroups = new List<Group> { new Group("Other", UsersMock.GetUsersListMock()) };
         public List<Test> listOfTests = new List<Test> { };
 
@@ -41,6 +47,7 @@ namespace WPF
 
             //listOfGroups.Groups.Add(new Group("Other", UsersMock.GetUsersListMock()));
             GroupsController controller = new GroupsController();
+            //controller.Save(listOfGroups.Groups);
             listOfGroups.Groups = controller.Load();
             ListBox_Groups.ItemsSource = listOfGroups.Groups;
             ComboBox_Groups.ItemsSource = listOfGroups.Groups;
