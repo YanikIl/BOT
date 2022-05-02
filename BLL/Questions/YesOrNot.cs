@@ -14,6 +14,16 @@ namespace BLL.Questions
 {
     public class YesOrNot : AbstractQuestion
     {
+        public string rigthAnswer { get; set; }
+
+        public YesOrNot(string name, string answer)
+        {
+            Name = name;
+            Options = new List<string> { "YES", "NO"};
+            Answer = answer;
+        }
+        
+        
         //public override AbstractQuestion Clone()
         //{
         //    List<string> list = new List<string>() { "yes", "no" };
