@@ -151,6 +151,8 @@ namespace WPF
             listOfTests.Add(new Test(TextBox_TestName.Text));
             ListBox_ListOfTest.Items.Refresh();
             ListBox_QuOfTest.ItemsSource = listOfTests[listOfTests.Count-1].questions;
+            Button_SaveTest.IsEnabled = true;
+            ComboBox_ChooseQType.IsEnabled = true;
 
         }
 
@@ -252,6 +254,19 @@ namespace WPF
         private void Button_SaveTest_Click(object sender, RoutedEventArgs e)
         {
             Button_SaveTest.IsEnabled = false;
+            TextBox_TestName.Text = "";
+            ComboBox_ChooseQType.SelectedIndex = -1;
+            ComboBox_ChooseQType.IsEnabled = false;
+            Button_ChooseQType.IsEnabled = false;
+
+            Label_WriteAQuestion.IsEnabled = false;
+            TextBox_QName.Text = "";
+            TextBox_QName.IsEnabled = false;
+            Button_SaveQ.IsEnabled=false;
+
+            RadioButton_Yes.Visibility = Visibility.Hidden;
+            RadioButton_No.Visibility = Visibility.Hidden;
+
         }
 
         private void ListBox_ListOfTest_SelectionChanged(object sender, SelectionChangedEventArgs e)

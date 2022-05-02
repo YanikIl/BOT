@@ -26,7 +26,7 @@
                     <TextBox x:Name="TextBox_TestName" HorizontalAlignment="Left" Margin="138,5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="278" Grid.Column="2" Height="21" Grid.ColumnSpan="2" TextChanged="TextBox_TestName_TextChanged"/>
                     <Label Content="Choose type of question" Grid.ColumnSpan="4" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" Width="140"/>
                     <Button x:Name="Button_AddTestName" Content="Add" Grid.ColumnSpan="4" HorizontalAlignment="Left" Margin="420,5,0,0" VerticalAlignment="Top" Width="44" IsEnabled="False" Click="Button_AddTestName_Click"/>
-                    <ComboBox x:Name="ComboBox_ChooseQType" Grid.ColumnSpan="4" HorizontalAlignment="Left" Margin="155,35,0,0" VerticalAlignment="Top" Width="261" SelectionChanged="ComboBox_ChooseQType_SelectionChanged">
+                    <ComboBox x:Name="ComboBox_ChooseQType" Grid.ColumnSpan="4" HorizontalAlignment="Left" Margin="155,35,0,0" VerticalAlignment="Top" Width="261" SelectionChanged="ComboBox_ChooseQType_SelectionChanged" IsEnabled="False">
                         <ComboBoxItem Content="Open"/>
                         <ComboBoxItem Content="Yes Or No"/>
                         <ComboBoxItem Content="One Option"/>
@@ -60,7 +60,7 @@
                     <Label Grid.Column="4" Content="List Of Tests" HorizontalAlignment="Left" Margin="1,1,0,0" VerticalAlignment="Top" Grid.Row="1"/>
                     <RadioButton x:Name="RadioButton_Yes" Content="YES" Grid.ColumnSpan="4" HorizontalAlignment="Left" Margin="72,155,0,0" VerticalAlignment="Top" IsEnabled="True" Checked="RadioButton_Yes_Checked" Visibility="Hidden"/>
                     <RadioButton x:Name="RadioButton_No" Grid.Column="3" Content="NO" HorizontalAlignment="Left" Margin="72,175,0,0" VerticalAlignment="Top" IsEnabled="True" Checked="RadioButton_No_Checked" Visibility="Hidden"/>
-                    <Button x:Name="Button_SaveTest" Content="SAVE TEST" HorizontalAlignment="Center" Margin="0,245,0,0" VerticalAlignment="Top" Height="42" Width="217" Click="Button_SaveTest_Click" Grid.Row="1" Grid.Column="3"/>
+                    <Button x:Name="Button_SaveTest" Content="SAVE TEST" HorizontalAlignment="Center" Margin="0,245,0,0" VerticalAlignment="Top" Height="42" Width="217" Click="Button_SaveTest_Click" Grid.Row="1" Grid.Column="3" IsEnabled="False"/>
 
 
                 </Grid>
