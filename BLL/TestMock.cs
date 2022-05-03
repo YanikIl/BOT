@@ -30,6 +30,11 @@ namespace BLL
                     new YesOrNot()
                     {
                         Name = "Are you really smart?"
+                    },
+                    new RadioButtonQuestion()
+                    {
+                        Name = "Ok. 2*2=?",
+                        Options = new List<string>{"2","3","4","5"}
                     }
                 }
             };

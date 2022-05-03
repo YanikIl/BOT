@@ -192,9 +192,10 @@ namespace WPF
                     //RadioButton_Yes.Visibility = Visibility.Visible;
                     //RadioButton_No.Visibility = Visibility.Visible;
                     break;
-                //case 2:
-                    
-                //    break;
+                case 2:
+                    StackPanel_AnswersOptions.Visibility = Visibility.Visible;
+                    Button_SaveQ.IsEnabled = true;
+                    break;
                 //case 3:
                     
                 //    break;
@@ -215,22 +216,21 @@ namespace WPF
                     Button_SaveTest.IsEnabled = true;
                     break;
                 case 1:
-                    //string answer = "";
-                    //if (RadioButton_Yes.IsChecked==true)
-                    //{
-                    //    answer = "YES";
-                    //}
-                    //else
-                    //{
-                    //    answer = "NO";
-                    //}
                     listOfTests[listOfTests.Count - 1].questions.Add(new YesOrNot(TextBox_QName.Text));
                     ListBox_QuOfTest.ItemsSource = listOfTests[listOfTests.Count - 1].questions;
                     ListBox_QuOfTest.Items.Refresh();
                     Button_SaveTest.IsEnabled = true;
                     break;
                 case 2:
-
+                    listOfTests[listOfTests.Count - 1].questions.Add(new RadioButtonQuestion(TextBox_QName.Text, new List<string> { 
+                        TextBox_Option1.Text, 
+                        TextBox_Option2.Text,
+                        TextBox_Option3.Text,
+                        TextBox_Option4.Text
+                    }));
+                    ListBox_QuOfTest.ItemsSource = listOfTests[listOfTests.Count - 1].questions;
+                    ListBox_QuOfTest.Items.Refresh();
+                    Button_SaveTest.IsEnabled = true;
                     break;
                 case 3:
 
@@ -249,15 +249,15 @@ namespace WPF
 
         }
 
-        private void RadioButton_Yes_Checked(object sender, RoutedEventArgs e)
-        {
-            Button_SaveQ.IsEnabled = true;
-        }
+        //private void RadioButton_Yes_Checked(object sender, RoutedEventArgs e)
+        //{
+        //    Button_SaveQ.IsEnabled = true;
+        //}
 
-        private void RadioButton_No_Checked(object sender, RoutedEventArgs e)
-        {
-            Button_SaveQ.IsEnabled = true;
-        }
+        //private void RadioButton_No_Checked(object sender, RoutedEventArgs e)
+        //{
+        //    Button_SaveQ.IsEnabled = true;
+        //}
 
         private void Button_SaveTest_Click(object sender, RoutedEventArgs e)
         {
@@ -270,7 +270,8 @@ namespace WPF
             Label_WriteAQuestion.IsEnabled = false;
             TextBox_QName.Text = "";
             TextBox_QName.IsEnabled = false;
-            Button_SaveQ.IsEnabled=false;
+            Button_SaveQ.IsEnabled=false; 
+            StackPanel_AnswersOptions.Visibility = Visibility.Hidden;
 
             //RadioButton_Yes.Visibility = Visibility.Hidden;
             //RadioButton_No.Visibility = Visibility.Hidden;
