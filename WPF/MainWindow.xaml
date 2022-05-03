@@ -29,9 +29,9 @@
                     <ComboBox x:Name="ComboBox_ChooseQType" Grid.ColumnSpan="4" HorizontalAlignment="Left" Margin="155,35,0,0" VerticalAlignment="Top" Width="261" SelectionChanged="ComboBox_ChooseQType_SelectionChanged" IsEnabled="False">
                         <ComboBoxItem Content="Open"/>
                         <ComboBoxItem Content="Yes Or No"/>
-                        <ComboBoxItem Content="One Option"/>
+                        <!--<ComboBoxItem Content="One Option"/>
                         <ComboBoxItem Content="Many Options"/>
-                        <ComboBoxItem Content="Sort Answers"/>
+                        <ComboBoxItem Content="Sort Answers"/>-->
 
                     </ComboBox>
                     <Button x:Name="Button_ChooseQType" Content="Choose" Grid.ColumnSpan="4" HorizontalAlignment="Left" Margin="420,35,0,0" VerticalAlignment="Top" Height="22" IsEnabled="False" Click="Button_ChooseQType_Click"/>
@@ -58,8 +58,8 @@
                     </ListBox>
                     <Label Grid.Column="4" Content="List Of Questions" HorizontalAlignment="Left" Margin="1,2,0,0" VerticalAlignment="Top"/>
                     <Label Grid.Column="4" Content="List Of Tests" HorizontalAlignment="Left" Margin="1,1,0,0" VerticalAlignment="Top" Grid.Row="1"/>
-                    <RadioButton x:Name="RadioButton_Yes" Content="YES" Grid.ColumnSpan="4" HorizontalAlignment="Left" Margin="72,155,0,0" VerticalAlignment="Top" IsEnabled="True" Checked="RadioButton_Yes_Checked" Visibility="Hidden"/>
-                    <RadioButton x:Name="RadioButton_No" Grid.Column="3" Content="NO" HorizontalAlignment="Left" Margin="72,175,0,0" VerticalAlignment="Top" IsEnabled="True" Checked="RadioButton_No_Checked" Visibility="Hidden"/>
+                    <!--<RadioButton x:Name="RadioButton_Yes" Content="YES" Grid.ColumnSpan="4" HorizontalAlignment="Left" Margin="72,155,0,0" VerticalAlignment="Top" IsEnabled="True" Checked="RadioButton_Yes_Checked" Visibility="Hidden"/>
+                    <RadioButton x:Name="RadioButton_No" Grid.Column="3" Content="NO" HorizontalAlignment="Left" Margin="72,175,0,0" VerticalAlignment="Top" IsEnabled="True" Checked="RadioButton_No_Checked" Visibility="Hidden"/>-->
                     <Button x:Name="Button_SaveTest" Content="SAVE TEST" HorizontalAlignment="Center" VerticalAlignment="Top" Height="42" Width="217" Click="Button_SaveTest_Click" Grid.Row="1" Grid.Column="3" IsEnabled="False" Margin="0,5,0,0"/>
 
 

@@ -16,11 +16,11 @@ namespace BLL.Questions
     {
         public string rigthAnswer { get; set; }
 
-        public YesOrNot(string name, string answer)
+        public YesOrNot(string name)
         {
             Name = name;
-            Options = new List<string> { "YES", "NO"};
-            Answer = answer;
+            Options = new List<string> {"YES", "NO"};
+            //Answer = answer;
         }
         
         
