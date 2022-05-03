@@ -32,10 +32,6 @@ namespace WPF
 
         private GroupsStorage listOfGroups = GroupsStorage.GetInstance();
         private GroupsController controller = new GroupsController();
-        private void CreateFile() 
-        {
-            controller.Save(listOfGroups.Groups);
-        }
         
         //public List<Group> listOfGroups = new List<Group> { new Group("Other", UsersMock.GetUsersListMock()) };
         public List<Test> listOfTests = new List<Test> { };
@@ -54,7 +50,7 @@ namespace WPF
             ListBox_ListOfTest.ItemsSource = listOfTests;
             ListBox_Tests.ItemsSource = listOfTests;
             ListBox_Groups1.ItemsSource = listOfGroups.Groups;
-            _telegramManager = new TelegramManager(_token, OnMessage);
+            _telegramManager = new TelegramManager(_token, OnMessage, TestMock.GetTestMock());
             _labels = new List<string>();
 
             Chat.ItemsSource = _labels;

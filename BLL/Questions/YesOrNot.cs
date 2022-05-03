@@ -15,6 +15,7 @@ namespace BLL.Questions
     public class YesOrNot : AbstractQuestion
     {
         public string Answer { get; set; }
+        public List<string> Options { get; set; } = new List<string>() { "YES", "NO" };
 
         public YesOrNot()
         {
@@ -24,7 +25,6 @@ namespace BLL.Questions
         public YesOrNot(string name)
         {
             Name = name;
-            Options = new List<string> {"YES", "NO"};
         }
 
         public override IReplyMarkup GetMarkup()
