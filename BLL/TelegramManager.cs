@@ -34,7 +34,7 @@ namespace BLL
         {
             if (update.Message != null && update.Message.Text != null)
             {
-                string send = update.Message.Text;
+                string send = update.Message.Chat.FirstName + " " + update.Message.Chat.LastName + ": " + update.Message.Text;
                 _onMessage(send);
             }
             //string user = update.Message.Chat.FirstName;
@@ -51,7 +51,6 @@ namespace BLL
                 var crntTest = Tests[chatId];
                 SendNextQuestion(crntTest);
 
-                Console.WriteLine(update.Message.Chat.FirstName + " " + update.Message.Chat.FirstName);
             }
             else if (Tests.ContainsKey(chatId) && Tests[chatId].QuestionIndex <= Tests[chatId].Test.questions.Count - 1)
             {
