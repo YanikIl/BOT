@@ -14,54 +14,49 @@ namespace BLL.Questions
 {
     public class CheckBoxQuestion: AbstractQuestion
     {
-        //public override AbstractQuestion Clone()
-        //{
-        //    List<string> list = new List<string>();
-        //    foreach (var item in Options)
-        //    {
-        //        list.Add(item.ToString());
-        //    }
-        //    return new CheckBoxQuestion()
-        //    {
-        //        Answer = this.Answer,
-        //        Name = this.Name,
-        //        Options = list
-        //    };
-        //}
+        public string Answer { get; set; }
 
+        public CheckBoxQuestion()
+        {
 
-        //public override IReplyMarkup GetMarkup()
-        //{
-        //    ReplyKeyboardMarkup replyKeyboard = new ReplyKeyboardMarkup(
-        //        new[]
-        //        {
-        //            new[]
-        //            {
-        //                new KeyboardButton(Options[0]),
-        //                new KeyboardButton(Options[1]),
-        //                new KeyboardButton(Options[2]),
-        //                new KeyboardButton(Options[3])
-        //            }
-        //        }
-        //        );
+        }
 
-        //    replyKeyboard.OneTimeKeyboard = true;
+        public CheckBoxQuestion(string name)
+        {
+            Name = name;
+            Options = new List<string> { "YES", "NO" };
+        }
 
-        //    return replyKeyboard;
-        //}
+        public override IReplyMarkup GetMarkup()
+        {
+            ReplyKeyboardMarkup replyKeyboard = new ReplyKeyboardMarkup(
+                new[]
+                {
+                    new[]
+                    {
+                        new KeyboardButton(Options[0]),
+                        new KeyboardButton(Options[1])
+                    },
+                }
+                );
 
-        //public override bool SetAnswer(string message)
-        //{
-        //    foreach (var item in Options)
-        //    {
-        //        if (message == item)
-        //        {
-        //            Answer = message;
-        //            return true;
-        //        }
-        //    }
-        //    return false;
-        //}
+            replyKeyboard.OneTimeKeyboard = true;
+
+            return replyKeyboard;
+        }
+
+        public override bool SetAnswer(string message)
+        {
+            foreach (var item in Options)
+            {
+                if (message == item)
+                {
+                    Answer = message;
+                    return true;
+                }
+            }
+            return false;
+        }
 
     }
 }

@@ -30,19 +30,27 @@ namespace WPF
         private List<string> _labels;
         private DispatcherTimer _timer;
 
-        public List<Group> listOfGroups = new List<Group> { new Group("Other", UsersMock.GetUsersListMock()) };
+        private GroupsStorage listOfGroups = GroupsStorage.GetInstance();
+        private GroupsController controller = new GroupsController();
+        
         //public List<Group> listOfGroups = new List<Group> { new Group("Other", UsersMock.GetUsersListMock()) };
         public List<Test> listOfTests = new List<Test> { };
-
+        
         public MainWindow()
         {
             InitializeComponent();
-            ListBox_Groups.ItemsSource = listOfGroups;
-            ComboBox_Groups.ItemsSource = listOfGroups;
+
+
+            //listOfGroups.Groups.Add(new Group("Other", UsersMock.GetUsersListMock()));
+            GroupsController controller = new GroupsController();
+            //controller.Save(listOfGroups.Groups);
+            listOfGroups.Groups = controller.Load();
+            ListBox_Groups.ItemsSource = listOfGroups.Groups;
+            ComboBox_Groups.ItemsSource = listOfGroups.Groups;
             ListBox_ListOfTest.ItemsSource = listOfTests;
-
-
-            _telegramManager = new TelegramManager(_token, OnMessage);
+            ListBox_Tests.ItemsSource = listOfTests;
+            ListBox_Groups1.ItemsSource = listOfGroups.Groups;
+            _telegramManager = new TelegramManager(_token, OnMessage, TestMock.GetTestMock());
             _labels = new List<string>();
 
             Chat.ItemsSource = _labels;
@@ -70,7 +78,7 @@ namespace WPF
         private void ButtonAddGroup_Click(object sender, RoutedEventArgs e)
         {
             string groupName = TextBoxAddGroup.Text;
-            listOfGroups.Add(new Group(groupName, new List<User>()));
+            listOfGroups.Groups.Add(new Group(groupName, new List<User>()));
             ListBox_Groups.Items.Refresh();
             ComboBox_Groups.Items.Refresh();
             TextBoxAddGroup.Text = "";
@@ -107,7 +115,7 @@ namespace WPF
 
         private void ListBox_Groups_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ListBox_UsersOfGroup.ItemsSource = listOfGroups[ListBox_Groups.SelectedIndex].Users;
+            ListBox_UsersOfGroup.ItemsSource = listOfGroups.Groups[ListBox_Groups.SelectedIndex].Users;
             ListBox_UsersOfGroup.Items.Refresh();
         }
 
@@ -122,8 +130,8 @@ namespace WPF
 
         private void Button_ChangeGroup_Click(object sender, RoutedEventArgs e)
         {
-            listOfGroups[ComboBox_Groups.SelectedIndex].Users.Add((User)ListBox_UsersOfGroup.SelectedItem);
-            listOfGroups[ListBox_Groups.SelectedIndex].Users.Remove((User)ListBox_UsersOfGroup.SelectedItem);
+            listOfGroups.Groups[ComboBox_Groups.SelectedIndex].Users.Add((User)ListBox_UsersOfGroup.SelectedItem);
+            listOfGroups.Groups[ListBox_Groups.SelectedIndex].Users.Remove((User)ListBox_UsersOfGroup.SelectedItem);
             ListBox_UsersOfGroup.Items.Refresh();
         }
 
@@ -176,23 +184,23 @@ namespace WPF
             {
                 case 0:
                     Button_SaveQ.IsEnabled = true;
-                    RadioButton_Yes.Visibility = Visibility.Hidden;
-                    RadioButton_No.Visibility = Visibility.Hidden;
+                    //RadioButton_Yes.Visibility = Visibility.Hidden;
+                    //RadioButton_No.Visibility = Visibility.Hidden;
                     break;
                 case 1:
-                    RadioButton_Yes.Visibility = Visibility.Visible;
-                    RadioButton_No.Visibility = Visibility.Visible;
-                    
+                    Button_SaveQ.IsEnabled = true;
+                    //RadioButton_Yes.Visibility = Visibility.Visible;
+                    //RadioButton_No.Visibility = Visibility.Visible;
                     break;
-                case 2:
+                //case 2:
                     
-                    break;
-                case 3:
+                //    break;
+                //case 3:
                     
-                    break;
-                case 4:
+                //    break;
+                //case 4:
                     
-                    break;
+                //    break;
             }
         }
 
@@ -207,16 +215,16 @@ namespace WPF
                     Button_SaveTest.IsEnabled = true;
                     break;
                 case 1:
-                    string answer = "";
-                    if (RadioButton_Yes.IsChecked==true)
-                    {
-                        answer = "YES";
-                    }
-                    else
-                    {
-                        answer = "NO";
-                    }
-                    listOfTests[listOfTests.Count - 1].questions.Add(new YesOrNot(TextBox_QName.Text, answer));
+                    //string answer = "";
+                    //if (RadioButton_Yes.IsChecked==true)
+                    //{
+                    //    answer = "YES";
+                    //}
+                    //else
+                    //{
+                    //    answer = "NO";
+                    //}
+                    listOfTests[listOfTests.Count - 1].questions.Add(new YesOrNot(TextBox_QName.Text));
                     ListBox_QuOfTest.ItemsSource = listOfTests[listOfTests.Count - 1].questions;
                     ListBox_QuOfTest.Items.Refresh();
                     Button_SaveTest.IsEnabled = true;
@@ -264,14 +272,21 @@ namespace WPF
             TextBox_QName.IsEnabled = false;
             Button_SaveQ.IsEnabled=false;
 
-            RadioButton_Yes.Visibility = Visibility.Hidden;
-            RadioButton_No.Visibility = Visibility.Hidden;
+            //RadioButton_Yes.Visibility = Visibility.Hidden;
+            //RadioButton_No.Visibility = Visibility.Hidden;
 
         }
 
         private void ListBox_ListOfTest_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ListBox_QuOfTest.ItemsSource = ((Test)ListBox_ListOfTest.SelectedItem).questions;
+        }
+
+        private void Button_SaveUsers_Groups_Click(object sender, RoutedEventArgs e)
+        {
+            GroupsController controller = new GroupsController();
+
+            controller.Save(listOfGroups.Groups);
         }
     }
 }

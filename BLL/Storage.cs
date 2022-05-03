@@ -9,6 +9,6 @@ namespace BLL
     public class Storage
     {
         public static Dictionary<long, User> DataBase { get; set; } = new Dictionary<long, User>();
-
+        public static Dictionary<long, TestsPassController> Tests { get; set; } = new Dictionary<long, TestsPassController>();
     }
 }

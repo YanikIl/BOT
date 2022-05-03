@@ -18,10 +18,9 @@ namespace BLL
         public List<string> Options { get; set; }
         public string Answer { get; set; }
 
+        public abstract IReplyMarkup GetMarkup();
+        public abstract bool SetAnswer(string message);
+
         //public abstract AbstractQuestion Clone();
-
-        //public abstract IReplyMarkup GetMarkup();
-
-        //public abstract bool SetAnswer(string message);
     }
 }

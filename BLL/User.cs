@@ -9,7 +9,7 @@ namespace BLL
     public class User
     {
         public string Name { get; set; }
-        //public string Group { get; set; }
+        
 
         public User(string name)
         {
