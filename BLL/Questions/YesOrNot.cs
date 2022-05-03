@@ -14,61 +14,45 @@ namespace BLL.Questions
 {
     public class YesOrNot : AbstractQuestion
     {
-        public string rigthAnswer { get; set; }
+        public string Answer { get; set; }
 
         public YesOrNot(string name)
         {
             Name = name;
             Options = new List<string> {"YES", "NO"};
-            //Answer = answer;
         }
-        
-        
-        //public override AbstractQuestion Clone()
-        //{
-        //    List<string> list = new List<string>() { "yes", "no" };
-        //    foreach (var item in Options)
-        //    {
-        //        list.Add(item.ToString());
-        //    }
-        //    return new CheckBoxQuestion()
-        //    {
-        //        Answer = this.Answer,
-        //        Name = this.Name,
-        //        Options = list
-        //    };
-        //}
 
-        //public override IReplyMarkup GetMarkup()
-        //{
-        //    ReplyKeyboardMarkup replyKeyboard = new ReplyKeyboardMarkup(
-        //        new[]
-        //        {
-        //            new[]
-        //            {
-        //                new KeyboardButton(Options[0]),
-        //                new KeyboardButton(Options[1])
-        //            }
-        //        }
-        //        );
+        public override IReplyMarkup GetMarkup()
+        {
+            ReplyKeyboardMarkup replyKeyboard = new ReplyKeyboardMarkup(
+                new[]
+                {
+                    new[]
+                    {
+                        new KeyboardButton(Options[0]),
+                        new KeyboardButton(Options[1])
+                    },
+                }
+                );
 
-        //    replyKeyboard.OneTimeKeyboard = true;
+            replyKeyboard.OneTimeKeyboard = true;
 
-        //    return replyKeyboard;
-        //}
+            return replyKeyboard;
+        }
 
-        //public override bool SetAnswer(string message)
-        //{
-        //    foreach (var item in Options)
-        //    {
-        //        if (message == item)
-        //        {
-        //            Answer = message;
-        //            return true;
-        //        }
-        //    }
-        //    return false;
-        //}
+        public override bool SetAnswer(string message)
+        {
+            foreach (var item in Options)
+            {
+                if (message == item)
+                {
+                    Answer = message;
+                    return true;
+                }
+            }
+            return false;
+        }
+
 
     }
 }

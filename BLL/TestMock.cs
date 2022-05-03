@@ -8,16 +8,20 @@ namespace BLL
 {
     public class TestMock
     {
-        public static List<Test> GetTestsListMock()
+        public static Test GetTestsListMock()
         {
-            List<Test> testsMock = new List<Test> {
-                new Test("Test 1"),
-                new Test("Test 2"),
-                new Test("Test 3"),
-                new Test("Test 4"),
-                new Test("Test 5"),
+            Test testExample = new Test("TestExample")
+            {
+                questions = new List<AbstractQuestion>
+                {
+                    new OpenQuestion()
+                    {
+
+                    }
+                }
             };
-            return testsMock;
+
+            return testExample;
         }
     }
 }

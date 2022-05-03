@@ -21,33 +21,17 @@ namespace BLL.Questions
             Options = null;
             Answer = null;
         }
-        
-        //public override AbstractQuestion Clone()
-        //{
-        //    List<string> list = new List<string>();
-        //    foreach (var item in Options)
-        //    {
-        //        list.Add(item.ToString());
-        //    }
-        //    return new OpenQuestion(this.Name)
-        //    {
-        //        Answer = this.Answer,
-        //        Name = this.Name,
-        //        Options = list
-        //    };
-        //}
 
-        //public override IReplyMarkup GetMarkup()
-        //{
-        //    return null;
-        //}
+        public override IReplyMarkup GetMarkup()
+        {
+            return null;
+        }
 
-        //public override bool SetAnswer(string message)
-        //{
-        //    message.Trim();
-        //    Answer = message;
-        //    return true;
-        //}
-
+        public override bool SetAnswer(string message)
+        {
+            message.Trim();
+            Answer = message;
+            return true;
+        }
     }
 }
