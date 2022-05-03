@@ -16,6 +16,11 @@ namespace BLL.Questions
     {
         public string Answer { get; set; }
 
+        public YesOrNot()
+        {
+
+        }
+
         public YesOrNot(string name)
         {
             Name = name;

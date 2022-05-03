@@ -14,6 +14,11 @@ namespace BLL.Questions
 {
     public class OpenQuestion: AbstractQuestion
     {
+
+        public OpenQuestion()
+        {
+
+        }
         
         public OpenQuestion(string name)
         {
