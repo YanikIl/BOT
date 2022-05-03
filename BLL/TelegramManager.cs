@@ -14,10 +14,10 @@ namespace BLL
         private Test _test;
         //private Action<string> _user;
 
-        Dictionary<long, TestsPassController> Tests { get; set; } = new Dictionary<long, TestsPassController>();
+        Dictionary<long, TestsPassController> Tests { get; set; } = Storage.Tests;
 
 
-        public TelegramManager(string token, Action<string> onMessage, Test test )// Action<string> user)
+        public TelegramManager(string token, Action<string> onMessage, Test test )// Group group)
         {
             _client =new TelegramBotClient(token);
             _onMessage = onMessage;
@@ -69,7 +69,7 @@ namespace BLL
             }
             else
             {
-                _client.SendTextMessageAsync(Tests[chatId].Chat.Id, "Ok. If you say so.");
+                _client.SendTextMessageAsync(Tests[chatId].Chat.Id, "Ok. If you say so. Bye.");
 
             }
         }
