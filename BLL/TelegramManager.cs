@@ -68,7 +68,7 @@ namespace BLL
             }
             else
             {
-                _client.SendTextMessageAsync(Tests[chatId].Chat.Id, "Ok. It's your life. Do what you want.");
+                _client.SendTextMessageAsync(Tests[chatId].Chat.Id, "It's your life. Do what you want.");
 
             }
         }

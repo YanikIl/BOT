@@ -244,21 +244,6 @@ namespace WPF
 
         }
 
-        private void ListBox_QuOfTest_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        //private void RadioButton_Yes_Checked(object sender, RoutedEventArgs e)
-        //{
-        //    Button_SaveQ.IsEnabled = true;
-        //}
-
-        //private void RadioButton_No_Checked(object sender, RoutedEventArgs e)
-        //{
-        //    Button_SaveQ.IsEnabled = true;
-        //}
-
         private void Button_SaveTest_Click(object sender, RoutedEventArgs e)
         {
             Button_SaveTest.IsEnabled = false;
@@ -273,14 +258,12 @@ namespace WPF
             Button_SaveQ.IsEnabled=false; 
             StackPanel_AnswersOptions.Visibility = Visibility.Hidden;
 
-            //RadioButton_Yes.Visibility = Visibility.Hidden;
-            //RadioButton_No.Visibility = Visibility.Hidden;
-
         }
 
         private void ListBox_ListOfTest_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ListBox_QuOfTest.ItemsSource = ((Test)ListBox_ListOfTest.SelectedItem).questions;
+            Button_AddNewQu.IsEnabled = true;
         }
 
         private void Button_SaveUsers_Groups_Click(object sender, RoutedEventArgs e)
@@ -288,6 +271,23 @@ namespace WPF
             GroupsController controller = new GroupsController();
 
             controller.Save(listOfGroups.Groups);
+        }
+
+
+        private void ListBox_QuOfTest_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Button_DeleteQuestion.IsEnabled = true;
+        }
+
+        private void Button_DeleteQuestion_Click(object sender, RoutedEventArgs e)
+        {
+            listOfTests[ListBox_ListOfTest.SelectedIndex].questions.Remove((AbstractQuestion)ListBox_QuOfTest.SelectedItem);
+            ListBox_QuOfTest.Items.Refresh();
+        }
+
+        private void Button_AddNewQu_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
