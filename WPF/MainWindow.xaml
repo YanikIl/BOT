@@ -29,9 +29,9 @@
                     <ComboBox x:Name="ComboBox_ChooseQType" Grid.ColumnSpan="4" HorizontalAlignment="Left" Margin="155,35,0,0" VerticalAlignment="Top" Width="261" SelectionChanged="ComboBox_ChooseQType_SelectionChanged" IsEnabled="False">
                         <ComboBoxItem Content="Open"/>
                         <ComboBoxItem Content="Yes Or No"/>
-                        <ComboBoxItem Content="One Option"/>
+                        <!--<ComboBoxItem Content="One Option"/>
                         <ComboBoxItem Content="Many Options"/>
-                        <ComboBoxItem Content="Sort Answers"/>
+                        <ComboBoxItem Content="Sort Answers"/>-->
 
                     </ComboBox>
                     <Button x:Name="Button_ChooseQType" Content="Choose" Grid.ColumnSpan="4" HorizontalAlignment="Left" Margin="420,35,0,0" VerticalAlignment="Top" Height="22" IsEnabled="False" Click="Button_ChooseQType_Click"/>
@@ -47,7 +47,7 @@
                         </ListBox.ItemTemplate>
                     </ListBox>
                     <Button x:Name="Button_SaveQ" Content="ADD" Grid.ColumnSpan="4" HorizontalAlignment="Left" Margin="420,93,0,0" VerticalAlignment="Top" Height="43" Click="Button_SaveQ_Click" Width="44" IsEnabled="False"/>
-                    <ListBox x:Name="ListBox_ListOfTest" Grid.Column="4" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,28,0,95" SelectionChanged="ListBox_ListOfTest_SelectionChanged">
+                    <ListBox x:Name="ListBox_ListOfTest" Grid.Column="4" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,28,0,166" SelectionChanged="ListBox_ListOfTest_SelectionChanged">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
@@ -58,14 +58,38 @@
                     </ListBox>
                     <Label Grid.Column="4" Content="List Of Questions" HorizontalAlignment="Left" Margin="1,2,0,0" VerticalAlignment="Top"/>
                     <Label Grid.Column="4" Content="List Of Tests" HorizontalAlignment="Left" Margin="1,1,0,0" VerticalAlignment="Top" Grid.Row="1"/>
-                    <RadioButton x:Name="RadioButton_Yes" Content="YES" Grid.ColumnSpan="4" HorizontalAlignment="Left" Margin="72,155,0,0" VerticalAlignment="Top" IsEnabled="True" Checked="RadioButton_Yes_Checked" Visibility="Hidden"/>
-                    <RadioButton x:Name="RadioButton_No" Grid.Column="3" Content="NO" HorizontalAlignment="Left" Margin="72,175,0,0" VerticalAlignment="Top" IsEnabled="True" Checked="RadioButton_No_Checked" Visibility="Hidden"/>
-                    <Button x:Name="Button_SaveTest" Content="SAVE TEST" HorizontalAlignment="Center" Margin="0,245,0,0" VerticalAlignment="Top" Height="42" Width="217" Click="Button_SaveTest_Click" Grid.Row="1" Grid.Column="3" IsEnabled="False"/>
+                    <!--<RadioButton x:Name="RadioButton_Yes" Content="YES" Grid.ColumnSpan="4" HorizontalAlignment="Left" Margin="72,155,0,0" VerticalAlignment="Top" IsEnabled="True" Checked="RadioButton_Yes_Checked" Visibility="Hidden"/>
+                    <RadioButton x:Name="RadioButton_No" Grid.Column="3" Content="NO" HorizontalAlignment="Left" Margin="72,175,0,0" VerticalAlignment="Top" IsEnabled="True" Checked="RadioButton_No_Checked" Visibility="Hidden"/>-->
+                    <Button x:Name="Button_SaveTest" Content="SAVE TEST" HorizontalAlignment="Center" VerticalAlignment="Top" Height="42" Width="217" Click="Button_SaveTest_Click" Grid.Row="1" Grid.Column="3" IsEnabled="False" Margin="0,5,0,0"/>
 
 
                 </Grid>
             </TabItem>
-            <TabItem Content="" Header="Tests" />
+            <TabItem Header="Tests">
+                <Grid>
+                    <Label x:Name="LabelListTests" Content="Tests" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="14"/>
+                    <ListBox x:Name="ListBox_Tests" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,40,0,336" HorizontalAlignment="Left" Width="406">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <TextBlock Text="{Binding Name}" Grid.Column="1"></TextBlock>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    <Label x:Name="LabelListGroups1" Content="Groups" HorizontalAlignment="Left" Margin="550,10,0,0" VerticalAlignment="Top" FontSize="14"/>
+                    <ListBox x:Name="ListBox_Groups1" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="550,40,0,336" HorizontalAlignment="Left" Width="406">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <TextBlock Text="{Binding Name}" Grid.Column="1"></TextBlock>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    <Button Content="Стартуем" HorizontalAlignment="Center" Margin="0,391,0,0" VerticalAlignment="Top" Height="74" Width="286" FontSize="20"/>
+                </Grid>
+            </TabItem>
             <TabItem Header="Users and Groups" Margin="-2,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Width="130" >
                 <Grid Margin="10,0,0,0">
                     <Grid.RowDefinitions>
@@ -91,7 +115,7 @@
                         </ListBox.ItemTemplate>
                     </ListBox>
                     <Label x:Name="Label_UsersOfGroup" Content="Users Of Groups" HorizontalAlignment="Left" VerticalAlignment="Top" Width="218" FontSize="14" FontStretch="Medium" FontWeight="Medium" Height="29" Margin="10,4,0,0" Grid.Column="3"/>
-                    <ListBox x:Name="ListBox_UsersOfGroup" HorizontalContentAlignment="Stretch" Margin="10,38,146,73" Grid.Column="3" SelectionChanged="ListBox_UsersOfGroup_SelectionChanged">
+                    <ListBox x:Name="ListBox_UsersOfGroup" HorizontalContentAlignment="Stretch" Margin="10,38,146,73" Grid.Column="3" SelectionChanged="ListBox_UsersOfGroup_SelectionChanged" d:ItemsSource="{d:SampleData ItemCount=5}">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
@@ -116,6 +140,7 @@
                     <ListBox Name="Chat" Margin="238,50,300,0" Background="LightGray" Grid.ColumnSpan="2" RenderTransformOrigin="0.453,0.207" Grid.Row="1" Grid.Column="2"/>
                     <Label Content="Чат" HorizontalAlignment="Left" Margin="240,0,0,0" VerticalAlignment="Top" Width="158" Height="32" Grid.Column="2" Grid.Row="1"/>
                     <Button Grid.Column="3" Content="Стартуем" HorizontalAlignment="Left" Margin="46,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="134" Click="ButtonStart_Click" Height="22"/>
+                    <Button x:Name="Button_SaveUsers_Groups" Grid.Column="3" Content="SAVE GROUPS" HorizontalAlignment="Left" Margin="404,38,0,0" VerticalAlignment="Top" Height="229" Width="95" Click="Button_SaveUsers_Groups_Click" FontWeight="Heavy"/>
                 </Grid>
             </TabItem>
         </TabControl>
