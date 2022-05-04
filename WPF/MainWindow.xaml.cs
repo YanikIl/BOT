@@ -16,6 +16,8 @@ using System.Windows.Shapes;
 using System.Windows.Threading;
 using BLL;
 using BLL.Questions;
+using System.IO;
+using Microsoft.Win32;
 
 
 namespace WPF
@@ -279,7 +281,12 @@ namespace WPF
 
         private void Button_SaveReport_Click(object sender, RoutedEventArgs e)
         {
-            reportsController.Save(Reports);
+            //reportsController.Save(Reports);
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Text file (*.txt)|*.txt";
+            if (saveFileDialog.ShowDialog() == true)
+                File.WriteAllText(saveFileDialog.FileName, reportsController.Serialize(Reports));
+            
         }
     }
 }
