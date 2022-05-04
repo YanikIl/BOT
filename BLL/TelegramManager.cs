@@ -15,6 +15,7 @@ namespace BLL
         //private Action<string> _user;
 
         Dictionary<long, TestsPassController> Tests { get; set; } = Storage.Tests;
+        Dictionary<long, Report> Reports { get; set; } = Storage.Reports;
 
 
         public TelegramManager(string token, Action<string> onMessage, Test test )// Group group)
@@ -41,11 +42,22 @@ namespace BLL
 
             long chatId = update.Message.Chat.Id;
 
-            if (!Tests.ContainsKey(chatId))
+            if (!Tests.ContainsKey(chatId) && !Reports.ContainsKey(chatId))
             {
                 Tests.Add(
                     chatId,
                     new TestsPassController(update.Message.Chat, _test)
+                    );
+
+                Reports.Add(
+                    chatId, 
+                    new Report() 
+                    { 
+                        Group = "Other",    
+                        User = update.Message.Chat.FirstName + " " + update.Message.Chat.LastName,
+                        Test = _test.Name,
+                        Answers = new List<string>()
+                    }
                     );
 
                 var crntTest = Tests[chatId];
@@ -54,6 +66,8 @@ namespace BLL
             }
             else if (Tests.ContainsKey(chatId) && Tests[chatId].QuestionIndex <= Tests[chatId].Test.questions.Count - 1)
             {
+                Reports[chatId].Answers.Add(update.Message.Text);
+
                 var crntTest = Tests[chatId];
 
                 if (crntTest.Test.questions[crntTest.QuestionIndex].SetAnswer(update.Message.Text))
@@ -68,8 +82,8 @@ namespace BLL
             }
             else
             {
+                Reports[chatId].Answers.Add(update.Message.Text);
                 _client.SendTextMessageAsync(Tests[chatId].Chat.Id, "It's your life. Do what you want.");
-
             }
         }
 
