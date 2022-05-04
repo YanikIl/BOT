@@ -8,12 +8,12 @@ namespace BLL
 {
     public class User
     {
-        public string UserName { get; set; }
+        public string Name { get; set; }
         
 
-        public User(string userName)
+        public User(string name)
         {
-            UserName = userName;
+            Name = name;
         }
     }
 }
