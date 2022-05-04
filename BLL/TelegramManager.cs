@@ -66,7 +66,7 @@ namespace BLL
             }
             else if (Tests.ContainsKey(chatId) && Tests[chatId].QuestionIndex < Tests[chatId].Test.questions.Count - 1)
             {
-                Reports[chatId].Answers.Add(update.Message.Text);
+                Reports[chatId].Answers.Add(Tests[chatId].Test.questions[Tests[chatId].QuestionIndex].Name + ": " + update.Message.Text);
 
                 var crntTest = Tests[chatId];
 
@@ -83,7 +83,7 @@ namespace BLL
             
             else
             {
-                Reports[chatId].Answers.Add(update.Message.Text);
+                Reports[chatId].Answers.Add(Tests[chatId].Test.questions[Tests[chatId].QuestionIndex].Name + ": " + update.Message.Text);
                 _client.SendTextMessageAsync(Tests[chatId].Chat.Id, "It's your life. Do what you want.");
             }
         }
