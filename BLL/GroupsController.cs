@@ -24,7 +24,6 @@ namespace BLL
                 //throw new ArgumentNullException("json");
                 List <Group> groups = new List<Group> { new Group("Other") };
                 return groups;
-
             }
             else
             {

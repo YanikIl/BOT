@@ -29,6 +29,8 @@ namespace WPF
         private const string _token = "5361971025:AAFZPT93Oh3qrcnm0BlL4xPzkFbFquIoJ6Y";
         private List<string> _labels;
         private DispatcherTimer _timer;
+        private List<string> _usersLabels;
+
 
         private GroupsStorage listOfGroups = GroupsStorage.GetInstance();
         private GroupsController controller = new GroupsController();
@@ -38,18 +40,23 @@ namespace WPF
         
         public MainWindow()
         {
+            _usersLabels = new List<string>();
             InitializeComponent();
 
+            ListBox_UsersOfGroup.ItemsSource = _usersLabels;
 
-            //listOfGroups.Groups.Add(new Group("Other", UsersMock.GetUsersListMock()));
+            listOfGroups.Groups.Add(new Group("Other", Storage.NameBase));
+
             GroupsController controller = new GroupsController();
             //controller.Save(listOfGroups.Groups);
+
             listOfGroups.Groups = controller.Load();
             ListBox_Groups.ItemsSource = listOfGroups.Groups;
             ComboBox_Groups.ItemsSource = listOfGroups.Groups;
+            ListBox_Groups1.ItemsSource = listOfGroups.Groups;
+
             ListBox_ListOfTest.ItemsSource = listOfTests;
             ListBox_Tests.ItemsSource = listOfTests;
-            ListBox_Groups1.ItemsSource = listOfGroups.Groups;
             _telegramManager = new TelegramManager(_token, OnMessage, TestMock.GetTestMock());
             _labels = new List<string>();
 
@@ -64,6 +71,10 @@ namespace WPF
         public void OnMessage(string send)
         {
             _labels.Add(send);
+        }
+        public void OnUsers(string user)
+        {
+            _usersLabels.Add(user);
         }
         private void ButtonStart_Click(object sender, RoutedEventArgs e)
         {

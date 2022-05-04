@@ -12,6 +12,9 @@ namespace BLL
         private TelegramBotClient _client;
         private Action<string> _onMessage;
         private Test _test;
+
+        private string _others;
+
         //private Action<string> _user;
 
         Dictionary<long, TestsPassController> Tests { get; set; } = Storage.Tests;
@@ -22,6 +25,9 @@ namespace BLL
             _client =new TelegramBotClient(token);
             _onMessage = onMessage;
             _test = test;
+
+            _others = "Others";
+
             //_user = user;
         }
 
@@ -29,11 +35,23 @@ namespace BLL
         {
             _client.StartReceiving( HandleResive, HandleError);
         }
-        
+        public void CreateGroup(string nameOfGroup)
+        {
+            if (!Storage.GroupBase.ContainsKey(nameOfGroup))
+            {
+                Storage.GroupBase.Add(nameOfGroup, new List<string>());
+            }
+        }
+
         private async Task HandleResive(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
         {
             if (update.Message != null && update.Message.Text != null)
             {
+                CreateGroup(_others);
+                string userName = $"{update.Message.Chat.FirstName} {update.Message.Chat.LastName}";
+                Storage.NameBase.Add(update.Message.Chat.Id, userName);
+                Storage.GroupBase[_others].Add(userName);
+
                 string send = update.Message.Chat.FirstName + " " + update.Message.Chat.LastName + ": " + update.Message.Text;
                 _onMessage(send);
             }

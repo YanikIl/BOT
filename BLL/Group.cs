@@ -23,8 +23,13 @@ namespace BLL
             Name = name;
             Users = users;
         }
-
         public Group(string name)
+        {
+            Name = name;
+            Users = new List<User>();
+        }
+
+        public Group(string name, Dictionary<long, string> nameBase)
         {
             Name = name;
             Users = new List<User>();
