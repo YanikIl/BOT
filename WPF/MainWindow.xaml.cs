@@ -32,7 +32,10 @@ namespace WPF
 
         private GroupsStorage listOfGroups = GroupsStorage.GetInstance();
         private GroupsController controller = new GroupsController();
-        
+
+        private Dictionary<long, Report> Reports { get; set; } = Storage.Reports;
+        private ReportsController reportsController = new ReportsController();
+
         //public List<Group> listOfGroups = new List<Group> { new Group("Other", UsersMock.GetUsersListMock()) };
         public List<Test> listOfTests = new List<Test> { };
         
@@ -254,8 +257,6 @@ namespace WPF
 
         private void Button_SaveUsers_Groups_Click(object sender, RoutedEventArgs e)
         {
-            GroupsController controller = new GroupsController();
-
             controller.Save(listOfGroups.Groups);
         }
 
@@ -271,6 +272,14 @@ namespace WPF
             ListBox_QuOfTest.Items.Refresh();
         }
 
-        
+        private void Chat_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void Button_SaveReport_Click(object sender, RoutedEventArgs e)
+        {
+            reportsController.Save(Reports);
+        }
     }
 }

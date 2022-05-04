@@ -64,7 +64,7 @@ namespace BLL
                 SendNextQuestion(crntTest);
 
             }
-            else if (Tests.ContainsKey(chatId) && Tests[chatId].QuestionIndex <= Tests[chatId].Test.questions.Count - 1)
+            else if (Tests.ContainsKey(chatId) && Tests[chatId].QuestionIndex < Tests[chatId].Test.questions.Count - 1)
             {
                 Reports[chatId].Answers.Add(update.Message.Text);
 
@@ -80,6 +80,7 @@ namespace BLL
                     SendNextQuestion(crntTest);
                 }
             }
+            
             else
             {
                 Reports[chatId].Answers.Add(update.Message.Text);
