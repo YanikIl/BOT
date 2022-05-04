@@ -31,11 +31,12 @@ namespace WPF
         private DispatcherTimer _timer;
 
         private GroupsStorage listOfGroups = GroupsStorage.GetInstance();
+        //private TestsStorage listOfTests = TestsStorage.GetInstance();
         private GroupsController controller = new GroupsController();
-        
+
         //public List<Group> listOfGroups = new List<Group> { new Group("Other", UsersMock.GetUsersListMock()) };
         public List<Test> listOfTests = new List<Test> { };
-        
+
         public MainWindow()
         {
             InitializeComponent();
@@ -45,6 +46,7 @@ namespace WPF
             GroupsController controller = new GroupsController();
             //controller.Save(listOfGroups.Groups);
             listOfGroups.Groups = controller.Load();
+            listOfTests.Tests = controller.Load();
             ListBox_Groups.ItemsSource = listOfGroups.Groups;
             ComboBox_Groups.ItemsSource = listOfGroups.Groups;
             ListBox_ListOfTest.ItemsSource = listOfTests;
@@ -257,6 +259,11 @@ namespace WPF
             GroupsController controller = new GroupsController();
 
             controller.Save(listOfGroups.Groups);
+        }
+        private void Button_SaveTestChange_Click(object sender, RoutedEventArgs e)
+        {
+            TestsController controller = new TestsController();
+            controller.Save(listOfTests.Tests);
         }
 
 
