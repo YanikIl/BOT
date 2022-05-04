@@ -15,16 +15,17 @@ namespace BLL.Questions
     public class RadioButtonQuestion: AbstractQuestion
     {
         public string Answer { get; set; }
+        public List<string> Options { get; set; } = new List<string>();
 
         public RadioButtonQuestion()
         {
 
         }
 
-        public RadioButtonQuestion(string name)
+        public RadioButtonQuestion(string name, List<string> options)
         {
             Name = name;
-            Options = new List<string> { "YES", "NO" };
+            Options = options;
         }
 
         public override IReplyMarkup GetMarkup()
@@ -36,6 +37,11 @@ namespace BLL.Questions
                     {
                         new KeyboardButton(Options[0]),
                         new KeyboardButton(Options[1])
+                    },
+                    new[]
+                    {
+                        new KeyboardButton(Options[2]),
+                        new KeyboardButton(Options[3])
                     },
                 }
                 );

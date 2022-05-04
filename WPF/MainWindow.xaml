@@ -24,20 +24,19 @@
                     </Grid.ColumnDefinitions>
                     <Label Grid.Column="2" Content="Add new test name" HorizontalAlignment="Left" VerticalAlignment="Top" Width="123" Grid.ColumnSpan="2" Height="26" Margin="10,0,0,0"/>
                     <TextBox x:Name="TextBox_TestName" HorizontalAlignment="Left" Margin="138,5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="278" Grid.Column="2" Height="21" Grid.ColumnSpan="2" TextChanged="TextBox_TestName_TextChanged"/>
-                    <Label Content="Choose type of question" Grid.ColumnSpan="4" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" Width="140"/>
-                    <Button x:Name="Button_AddTestName" Content="Add" Grid.ColumnSpan="4" HorizontalAlignment="Left" Margin="420,5,0,0" VerticalAlignment="Top" Width="44" IsEnabled="False" Click="Button_AddTestName_Click"/>
-                    <ComboBox x:Name="ComboBox_ChooseQType" Grid.ColumnSpan="4" HorizontalAlignment="Left" Margin="155,35,0,0" VerticalAlignment="Top" Width="261" SelectionChanged="ComboBox_ChooseQType_SelectionChanged" IsEnabled="False">
+                    <Label x:Name="Label_ChooseTypeOfQ" Content="Choose type of question:" HorizontalAlignment="Left" Margin="10,62,0,0" VerticalAlignment="Top" Width="145" Grid.Column="4" IsEnabled="False"/>
+                    <Button x:Name="Button_AddTestName" Content="Add" Grid.ColumnSpan="4" HorizontalAlignment="Left" Margin="420,5,0,0" VerticalAlignment="Top" Width="57" IsEnabled="False" Click="Button_AddTestName_Click"/>
+                    <ComboBox x:Name="ComboBox_ChooseQType" HorizontalAlignment="Left" Margin="160,66,0,0" VerticalAlignment="Top" Width="304" SelectionChanged="ComboBox_ChooseQType_SelectionChanged" IsEnabled="False" Grid.Column="4">
                         <ComboBoxItem Content="Open"/>
                         <ComboBoxItem Content="Yes Or No"/>
-                        <!--<ComboBoxItem Content="One Option"/>
-                        <ComboBoxItem Content="Many Options"/>
+                        <ComboBoxItem Content="One correct answer"/>
+                        <!--<ComboBoxItem Content="Many Options"/>
                         <ComboBoxItem Content="Sort Answers"/>-->
 
                     </ComboBox>
-                    <Button x:Name="Button_ChooseQType" Content="Choose" Grid.ColumnSpan="4" HorizontalAlignment="Left" Margin="420,35,0,0" VerticalAlignment="Top" Height="22" IsEnabled="False" Click="Button_ChooseQType_Click"/>
-                    <Label x:Name="Label_WriteAQuestion" Content="Write a question:" Grid.ColumnSpan="4" HorizontalAlignment="Left" Margin="10,62,0,0" VerticalAlignment="Top" IsEnabled="False"/>
-                    <TextBox x:Name="TextBox_QName" HorizontalAlignment="Center" Margin="0,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="344" Grid.Column="3" Height="43" TextChanged="TextBox_QName_TextChanged" IsEnabled="False"/>
-                    <ListBox x:Name="ListBox_QuOfTest" Grid.Column="4" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="ListBox_QuOfTest_SelectionChanged" Margin="0,30,0,106">
+                    <Label x:Name="Label_WriteAQuestion" Content="Write a question:" HorizontalAlignment="Left" Margin="10,92,0,0" VerticalAlignment="Top" IsEnabled="False" Grid.Column="4"/>
+                    <TextBox x:Name="TextBox_QName" HorizontalAlignment="Center" Margin="0,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="344" Grid.Column="4" Height="42" TextChanged="TextBox_QName_TextChanged" IsEnabled="False"/>
+                    <ListBox x:Name="ListBox_QuOfTest" Grid.Column="3" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="ListBox_QuOfTest_SelectionChanged" Margin="5,30,105,106" Grid.Row="1">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
@@ -46,8 +45,8 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                    <Button x:Name="Button_SaveQ" Content="ADD" Grid.ColumnSpan="4" HorizontalAlignment="Left" Margin="420,93,0,0" VerticalAlignment="Top" Height="43" Click="Button_SaveQ_Click" Width="44" IsEnabled="False"/>
-                    <ListBox x:Name="ListBox_ListOfTest" Grid.Column="4" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,28,0,166" SelectionChanged="ListBox_ListOfTest_SelectionChanged">
+                    <Button x:Name="Button_SaveQ" Content="ADD" HorizontalAlignment="Left" Margin="420,124,0,0" VerticalAlignment="Top" Height="42" Click="Button_SaveQ_Click" Width="44" IsEnabled="False" Grid.Column="4" />
+                    <ListBox x:Name="ListBox_ListOfTest" Grid.Column="3" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,62,105,40" SelectionChanged="ListBox_ListOfTest_SelectionChanged">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
@@ -56,11 +55,19 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                    <Label Grid.Column="4" Content="List Of Questions" HorizontalAlignment="Left" Margin="1,2,0,0" VerticalAlignment="Top"/>
-                    <Label Grid.Column="4" Content="List Of Tests" HorizontalAlignment="Left" Margin="1,1,0,0" VerticalAlignment="Top" Grid.Row="1"/>
+                    <Label Grid.Column="3" Content="List Of Questions" HorizontalAlignment="Left" Margin="6,2,0,0" VerticalAlignment="Top" Grid.Row="1" FontWeight="SemiBold"/>
+                    <Label Grid.Column="3" Content="List Of Tests" HorizontalAlignment="Left" Margin="11,35,0,0" VerticalAlignment="Top" Width="100" FontWeight="SemiBold"/>
                     <!--<RadioButton x:Name="RadioButton_Yes" Content="YES" Grid.ColumnSpan="4" HorizontalAlignment="Left" Margin="72,155,0,0" VerticalAlignment="Top" IsEnabled="True" Checked="RadioButton_Yes_Checked" Visibility="Hidden"/>
                     <RadioButton x:Name="RadioButton_No" Grid.Column="3" Content="NO" HorizontalAlignment="Left" Margin="72,175,0,0" VerticalAlignment="Top" IsEnabled="True" Checked="RadioButton_No_Checked" Visibility="Hidden"/>-->
-                    <Button x:Name="Button_SaveTest" Content="SAVE TEST" HorizontalAlignment="Center" VerticalAlignment="Top" Height="42" Width="217" Click="Button_SaveTest_Click" Grid.Row="1" Grid.Column="3" IsEnabled="False" Margin="0,5,0,0"/>
+                    <StackPanel x:Name="StackPanel_AnswersOptions" Grid.Column="4" HorizontalAlignment="Center" Height="153" Margin="0,183,0,0" VerticalAlignment="Top" Width="330" Visibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Visible">
+                        <Label Content="Add all answers options:"/>
+                        <TextBox x:Name="TextBox_Option1" Height="31" TextWrapping="Wrap" Text="" Width="330"/>
+                        <TextBox x:Name="TextBox_Option2" Height="31" TextWrapping="Wrap" Text="" Width="330"/>
+                        <TextBox x:Name="TextBox_Option3" Height="31" TextWrapping="Wrap" Text="" Width="330"/>
+                        <TextBox x:Name="TextBox_Option4" Height="31" TextWrapping="Wrap" Text="" Width="330"/>
+                    </StackPanel>
+                    <Button x:Name="Button_DeleteQuestion" Grid.Column="3" Content="Delete this question from test" HorizontalAlignment="Left" Height="25" Margin="5,231,0,0" VerticalAlignment="Top" Width="169" IsEnabled="False" Background="#FFFFB5B5" Grid.Row="1" Click="Button_DeleteQuestion_Click"/>
+                    <Button x:Name="Button_AddNewQu" Grid.Column="3" Content="Add question" HorizontalAlignment="Left" Height="36" Margin="393,62,0,0" VerticalAlignment="Top" Width="84" IsEnabled="False" Background="#FFB5E0FF" Click="Button_AddNewQu_Click"/>
 
 
                 </Grid>

@@ -140,13 +140,6 @@ namespace WPF
 
         }
 
-
-
-        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
         private void TextBox_TestName_TextChanged(object sender, TextChangedEventArgs e)
         {
             Button_AddTestName.IsEnabled = true;
@@ -157,11 +150,16 @@ namespace WPF
         private void Button_AddTestName_Click(object sender, RoutedEventArgs e)
         {
             listOfTests.Add(new Test(TextBox_TestName.Text));
+            TextBox_TestName.Text = "";
             ListBox_ListOfTest.Items.Refresh();
-            ListBox_QuOfTest.ItemsSource = listOfTests[listOfTests.Count-1].questions;
-            Button_SaveTest.IsEnabled = true;
-            ComboBox_ChooseQType.IsEnabled = true;
+            
 
+        }
+
+        private void Button_AddNewQu_Click(object sender, RoutedEventArgs e)
+        {
+            Label_ChooseTypeOfQ.IsEnabled = true;
+            ComboBox_ChooseQType.IsEnabled = true;
         }
 
         private void TextBox_QName_TextChanged(object sender, TextChangedEventArgs e)
@@ -170,11 +168,6 @@ namespace WPF
         }
 
         private void ComboBox_ChooseQType_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            Button_ChooseQType.IsEnabled = true;
-        }
-
-        private void Button_ChooseQType_Click(object sender, RoutedEventArgs e)
         {
             Label_WriteAQuestion.IsEnabled = true;
             TextBox_QName.IsEnabled = true;
@@ -192,45 +185,46 @@ namespace WPF
                     //RadioButton_Yes.Visibility = Visibility.Visible;
                     //RadioButton_No.Visibility = Visibility.Visible;
                     break;
-                //case 2:
+                case 2:
+                    StackPanel_AnswersOptions.Visibility = Visibility.Visible;
+                    Button_SaveQ.IsEnabled = true;
                     
-                //    break;
-                //case 3:
-                    
-                //    break;
-                //case 4:
-                    
-                //    break;
+                    break;
+                    //case 3:
+
+                    //    break;
+                    //case 4:
+
+                    //    break;
             }
         }
+
+
 
         private void Button_SaveQ_Click(object sender, RoutedEventArgs e)
         {
             switch (ComboBox_ChooseQType.SelectedIndex)
             {
                 case 0:
-                    listOfTests[listOfTests.Count - 1].questions.Add(new OpenQuestion(TextBox_QName.Text));
-                    ListBox_QuOfTest.ItemsSource = listOfTests[listOfTests.Count - 1].questions;
+                    listOfTests[ListBox_ListOfTest.SelectedIndex].questions.Add(new OpenQuestion(TextBox_QName.Text));
                     ListBox_QuOfTest.Items.Refresh();
-                    Button_SaveTest.IsEnabled = true;
                     break;
                 case 1:
-                    //string answer = "";
-                    //if (RadioButton_Yes.IsChecked==true)
-                    //{
-                    //    answer = "YES";
-                    //}
-                    //else
-                    //{
-                    //    answer = "NO";
-                    //}
-                    listOfTests[listOfTests.Count - 1].questions.Add(new YesOrNot(TextBox_QName.Text));
-                    ListBox_QuOfTest.ItemsSource = listOfTests[listOfTests.Count - 1].questions;
+                    listOfTests[ListBox_ListOfTest.SelectedIndex].questions.Add(new YesOrNot(TextBox_QName.Text));
                     ListBox_QuOfTest.Items.Refresh();
-                    Button_SaveTest.IsEnabled = true;
                     break;
                 case 2:
-
+                    listOfTests[ListBox_ListOfTest.SelectedIndex].questions.Add(new RadioButtonQuestion(TextBox_QName.Text, new List<string> { 
+                        TextBox_Option1.Text, 
+                        TextBox_Option2.Text,
+                        TextBox_Option3.Text,
+                        TextBox_Option4.Text
+                    }));
+                    ListBox_QuOfTest.Items.Refresh();
+                    TextBox_Option1.Text = "";
+                    TextBox_Option2.Text = "";
+                    TextBox_Option3.Text = "";
+                    TextBox_Option4.Text = "";
                     break;
                 case 3:
 
@@ -239,47 +233,23 @@ namespace WPF
 
                     break;
             }
-
-            
-
-        }
-
-        private void ListBox_QuOfTest_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void RadioButton_Yes_Checked(object sender, RoutedEventArgs e)
-        {
-            Button_SaveQ.IsEnabled = true;
-        }
-
-        private void RadioButton_No_Checked(object sender, RoutedEventArgs e)
-        {
-            Button_SaveQ.IsEnabled = true;
-        }
-
-        private void Button_SaveTest_Click(object sender, RoutedEventArgs e)
-        {
-            Button_SaveTest.IsEnabled = false;
-            TextBox_TestName.Text = "";
             ComboBox_ChooseQType.SelectedIndex = -1;
             ComboBox_ChooseQType.IsEnabled = false;
-            Button_ChooseQType.IsEnabled = false;
 
             Label_WriteAQuestion.IsEnabled = false;
             TextBox_QName.Text = "";
             TextBox_QName.IsEnabled = false;
-            Button_SaveQ.IsEnabled=false;
+            Button_SaveQ.IsEnabled = false;
+            StackPanel_AnswersOptions.Visibility = Visibility.Hidden;
 
-            //RadioButton_Yes.Visibility = Visibility.Hidden;
-            //RadioButton_No.Visibility = Visibility.Hidden;
+
 
         }
 
         private void ListBox_ListOfTest_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ListBox_QuOfTest.ItemsSource = ((Test)ListBox_ListOfTest.SelectedItem).questions;
+            Button_AddNewQu.IsEnabled = true;
         }
 
         private void Button_SaveUsers_Groups_Click(object sender, RoutedEventArgs e)
@@ -288,5 +258,19 @@ namespace WPF
 
             controller.Save(listOfGroups.Groups);
         }
+
+
+        private void ListBox_QuOfTest_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Button_DeleteQuestion.IsEnabled = true;
+        }
+
+        private void Button_DeleteQuestion_Click(object sender, RoutedEventArgs e)
+        {
+            listOfTests[ListBox_ListOfTest.SelectedIndex].questions.Remove((AbstractQuestion)ListBox_QuOfTest.SelectedItem);
+            ListBox_QuOfTest.Items.Refresh();
+        }
+
+        
     }
 }
