@@ -74,7 +74,7 @@
             </TabItem>
             <TabItem Header="Tests">
                 <Grid>
-                    <Label x:Name="LabelListTests" Content="Tests" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="14"/>
+                    <Label x:Name="LabelListTests" Content="Tests" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Medium"/>
                     <ListBox x:Name="ListBox_Tests" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,40,0,336" HorizontalAlignment="Left" Width="406">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
@@ -84,7 +84,7 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                    <Label x:Name="LabelListGroups1" Content="Groups" HorizontalAlignment="Left" Margin="550,10,0,0" VerticalAlignment="Top" FontSize="14"/>
+                    <Label x:Name="LabelListGroups1" Content="Groups" HorizontalAlignment="Left" Margin="550,10,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Medium"/>
                     <ListBox x:Name="ListBox_Groups1" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="550,40,0,336" HorizontalAlignment="Left" Width="406">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
@@ -94,7 +94,10 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                    <Button Content="Стартуем" HorizontalAlignment="Center" Margin="0,391,0,0" VerticalAlignment="Top" Height="74" Width="286" FontSize="20"/>
+                    <ListBox x:Name="Chat" Margin="287,361,299,10" Background="White" RenderTransformOrigin="0.453,0.207"/>
+                    <Button Content="START" HorizontalAlignment="Left" Margin="715,361,0,0" VerticalAlignment="Top" Width="134" Click="ButtonStart_Click" Height="32" Background="#FFC2FAB5" FontWeight="Medium"/>
+                    <Label Content="Chat:" HorizontalAlignment="Left" Margin="242,361,0,0" VerticalAlignment="Top" Width="40" Height="32" FontSize="14" FontWeight="Medium"/>
+                    <Button x:Name="Button_SaveReport" Content="Save Report" HorizontalAlignment="Left" Height="58" Margin="715,412,0,0" VerticalAlignment="Top" Width="134" Background="#FFB5D4FF" FontWeight="Medium" Click="Button_SaveReport_Click"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Users and Groups" Margin="-2,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Width="130" >
@@ -144,9 +147,6 @@
                         </ComboBox.ItemTemplate>
                     </ComboBox>
                     <Button x:Name="Button_ChangeGroup" Grid.Column="3" Content="Add to Group" HorizontalAlignment="Left" Margin="253,291,0,0" VerticalAlignment="Top" Height="30" Width="90" IsEnabled="False" Click="Button_ChangeGroup_Click"/>
-                    <ListBox Name="Chat" Margin="238,50,300,0" Background="LightGray" Grid.ColumnSpan="2" RenderTransformOrigin="0.453,0.207" Grid.Row="1" Grid.Column="2"/>
-                    <Label Content="Чат" HorizontalAlignment="Left" Margin="240,0,0,0" VerticalAlignment="Top" Width="158" Height="32" Grid.Column="2" Grid.Row="1"/>
-                    <Button Grid.Column="3" Content="Стартуем" HorizontalAlignment="Left" Margin="46,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="134" Click="ButtonStart_Click" Height="22"/>
                     <Button x:Name="Button_SaveUsers_Groups" Grid.Column="3" Content="SAVE GROUPS" HorizontalAlignment="Left" Margin="404,38,0,0" VerticalAlignment="Top" Height="229" Width="95" Click="Button_SaveUsers_Groups_Click" FontWeight="Heavy"/>
                 </Grid>
             </TabItem>
