@@ -42,14 +42,20 @@ namespace BLL
                 Storage.GroupBase.Add(nameOfGroup, new List<string>());
             }
         }
+        public void OutputUser()
+        {
+            foreach (var user in Storage.NameBase)
+            {
 
+            }
+        }
         private async Task HandleResive(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
         {
             if (update.Message != null && update.Message.Text != null)
             {
                 CreateGroup(_others);
                 string userName = $"{update.Message.Chat.FirstName} {update.Message.Chat.LastName}";
-                Storage.NameBase.Add(update.Message.Chat.Id, userName);
+                Storage.NameBase.Add(update.Message.Chat.Id, new User(userName));
                 Storage.GroupBase[_others].Add(userName);
 
                 string send = update.Message.Chat.FirstName + " " + update.Message.Chat.LastName + ": " + update.Message.Text;

@@ -45,7 +45,7 @@ namespace WPF
 
             ListBox_UsersOfGroup.ItemsSource = _usersLabels;
 
-            listOfGroups.Groups.Add(new Group("Other", Storage.NameBase));
+            listOfGroups.Groups.Add(new Group("Other", Storage.NameBase()));
 
             GroupsController controller = new GroupsController();
             //controller.Save(listOfGroups.Groups);
