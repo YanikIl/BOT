@@ -31,11 +31,11 @@ namespace WPF
         private DispatcherTimer _timer;
 
         private GroupsStorage listOfGroups = GroupsStorage.GetInstance();
-        //private TestsStorage listOfTests = TestsStorage.GetInstance();
+        private TestsStorage listOfTests = TestsStorage.GetInstance();
         private GroupsController controller = new GroupsController();
-
+        private TestsController testController = new TestsController();
         //public List<Group> listOfGroups = new List<Group> { new Group("Other", UsersMock.GetUsersListMock()) };
-        public List<Test> listOfTests = new List<Test> { };
+        //public List<Test> listOfTests = new List<Test> { };
 
         public MainWindow()
         {
@@ -46,11 +46,11 @@ namespace WPF
             GroupsController controller = new GroupsController();
             //controller.Save(listOfGroups.Groups);
             listOfGroups.Groups = controller.Load();
-            listOfTests.Tests = controller.Load();
+            listOfTests.Tests = testController.Load();
             ListBox_Groups.ItemsSource = listOfGroups.Groups;
             ComboBox_Groups.ItemsSource = listOfGroups.Groups;
-            ListBox_ListOfTest.ItemsSource = listOfTests;
-            ListBox_Tests.ItemsSource = listOfTests;
+            ListBox_ListOfTest.ItemsSource = listOfTests.Tests;
+            ListBox_Tests.ItemsSource = listOfTests.Tests;
             ListBox_Groups1.ItemsSource = listOfGroups.Groups;
             _telegramManager = new TelegramManager(_token, OnMessage, TestMock.GetTestMock());
             _labels = new List<string>();
@@ -151,7 +151,7 @@ namespace WPF
 
         private void Button_AddTestName_Click(object sender, RoutedEventArgs e)
         {
-            listOfTests.Add(new Test(TextBox_TestName.Text));
+            listOfTests.Tests.Add(new Test(TextBox_TestName.Text));
             TextBox_TestName.Text = "";
             ListBox_ListOfTest.Items.Refresh();
             
@@ -208,15 +208,15 @@ namespace WPF
             switch (ComboBox_ChooseQType.SelectedIndex)
             {
                 case 0:
-                    listOfTests[ListBox_ListOfTest.SelectedIndex].questions.Add(new OpenQuestion(TextBox_QName.Text));
+                    listOfTests.Tests[ListBox_ListOfTest.SelectedIndex].questions.Add(new OpenQuestion(TextBox_QName.Text));
                     ListBox_QuOfTest.Items.Refresh();
                     break;
                 case 1:
-                    listOfTests[ListBox_ListOfTest.SelectedIndex].questions.Add(new YesOrNot(TextBox_QName.Text));
+                    listOfTests.Tests[ListBox_ListOfTest.SelectedIndex].questions.Add(new YesOrNot(TextBox_QName.Text));
                     ListBox_QuOfTest.Items.Refresh();
                     break;
                 case 2:
-                    listOfTests[ListBox_ListOfTest.SelectedIndex].questions.Add(new RadioButtonQuestion(TextBox_QName.Text, new List<string> { 
+                    listOfTests.Tests[ListBox_ListOfTest.SelectedIndex].questions.Add(new RadioButtonQuestion(TextBox_QName.Text, new List<string> { 
                         TextBox_Option1.Text, 
                         TextBox_Option2.Text,
                         TextBox_Option3.Text,
@@ -256,14 +256,14 @@ namespace WPF
 
         private void Button_SaveUsers_Groups_Click(object sender, RoutedEventArgs e)
         {
-            GroupsController controller = new GroupsController();
+            //GroupsController controller = new GroupsController();
 
             controller.Save(listOfGroups.Groups);
         }
         private void Button_SaveTestChange_Click(object sender, RoutedEventArgs e)
         {
-            TestsController controller = new TestsController();
-            controller.Save(listOfTests.Tests);
+            //TestsController controller = new TestsController();
+            testController.Save(listOfTests.Tests);
         }
 
 
@@ -274,7 +274,7 @@ namespace WPF
 
         private void Button_DeleteQuestion_Click(object sender, RoutedEventArgs e)
         {
-            listOfTests[ListBox_ListOfTest.SelectedIndex].questions.Remove((AbstractQuestion)ListBox_QuOfTest.SelectedItem);
+            listOfTests.Tests[ListBox_ListOfTest.SelectedIndex].questions.Remove((AbstractQuestion)ListBox_QuOfTest.SelectedItem);
             ListBox_QuOfTest.Items.Refresh();
         }
 

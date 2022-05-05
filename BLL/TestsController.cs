@@ -21,7 +21,9 @@ namespace BLL
         {
             if (json == null)
             {
-                throw new ArgumentNullException("json");
+                //throw new ArgumentNullException("json");
+                List<Test> tests = new List<Test> { };
+                return tests;
 
             }
             else
