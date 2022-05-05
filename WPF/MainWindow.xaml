@@ -87,7 +87,8 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                    <Button Content="Стартуем" HorizontalAlignment="Center" Margin="0,391,0,0" VerticalAlignment="Top" Height="74" Width="286" FontSize="20"/>
+                    <Button Content="Start" HorizontalAlignment="Center" Margin="0,391,0,0" VerticalAlignment="Top" Height="74" Width="286" FontSize="20"/>
+                    <Button Content="Save user" HorizontalAlignment="Center" Margin="0,520,0,0" VerticalAlignment="Top" Height="36" Width="171" Click="ButtonSaveUser_Click"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Users and Groups" Margin="-2,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Width="130" >

@@ -45,7 +45,7 @@ namespace WPF
 
             ListBox_UsersOfGroup.ItemsSource = _usersLabels;
 
-            listOfGroups.Groups.Add(new Group("Other", Storage.NameBase()));
+            listOfGroups.Groups.Add(new Group("Other", TelegramManager.OutputUser()));
 
             GroupsController controller = new GroupsController();
             //controller.Save(listOfGroups.Groups);
@@ -67,6 +67,7 @@ namespace WPF
             _timer.Start();
 
         }
+
 
         public void OnMessage(string send)
         {
@@ -299,5 +300,11 @@ namespace WPF
 
             controller.Save(listOfGroups.Groups);
         }
+
+        private void ButtonSaveUser_Click(object sender, RoutedEventArgs e)
+        {
+            listOfGroups.Groups.Add(new Group("Other", OutputUser() ));
+        }
     }
 }
+

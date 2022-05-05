@@ -46,7 +46,8 @@ namespace BLL
         {
             foreach (var user in Storage.NameBase)
             {
-
+                string userName = user.Value;
+                _onMessage(userName);
             }
         }
         private async Task HandleResive(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
@@ -55,7 +56,7 @@ namespace BLL
             {
                 CreateGroup(_others);
                 string userName = $"{update.Message.Chat.FirstName} {update.Message.Chat.LastName}";
-                Storage.NameBase.Add(update.Message.Chat.Id, new User(userName));
+                Storage.NameBase.Add(update.Message.Chat.Id, userName);
                 Storage.GroupBase[_others].Add(userName);
 
                 string send = update.Message.Chat.FirstName + " " + update.Message.Chat.LastName + ": " + update.Message.Text;
