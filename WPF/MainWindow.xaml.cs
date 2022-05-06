@@ -303,7 +303,7 @@ namespace WPF
 
         private void ButtonSaveUser_Click(object sender, RoutedEventArgs e)
         {
-            listOfGroups.Groups.Add(new Group("Other", OutputUser() ));
+            listOfGroups.Groups.Add(new Group("Other",TelegramManager.OutputUser() ));
         }
     }
 }

@@ -42,13 +42,14 @@ namespace BLL
                 Storage.GroupBase.Add(nameOfGroup, new List<string>());
             }
         }
-        public void OutputUser()
+        public static List<User> OutputUser()
         {
+            List<User> users = new List<User>();
             foreach (var user in Storage.NameBase)
             {
-                string userName = user.Value;
-                _onMessage(userName);
+                 users.Add(new User(user.Value));
             }
+            return users;
         }
         private async Task HandleResive(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
         {
